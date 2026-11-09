@@ -93,6 +93,20 @@ em { font-style: italic; }
 .carte .foot { margin-top: 44px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
 .km { font-size: .7rem; letter-spacing: .26em; text-transform: uppercase; color: var(--mute); }
 
+/* Team */
+.team { padding-block: clamp(80px, 11vw, 150px); }
+.team header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px 40px; margin-bottom: 48px; }
+.team h2 { font-size: clamp(2.8rem, 6.4vw, 5.6rem); line-height: .95; margin-top: 14px; }
+.team header p { margin: 0; color: var(--mute); max-width: 36ch; }
+.chairs { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 3vw, 40px); }
+@media (max-width: 760px) { .chairs { grid-template-columns: 1fr; max-width: 440px; } }
+.chair { min-width: 0; display: flex; flex-direction: column; }
+.chair img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; filter: saturate(.95); }
+.chair .who { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-top: 16px; border-top: 1px solid var(--ink); margin-top: 16px; }
+.chair h3 { font-size: 2rem; line-height: 1; }
+.chair .role { font-size: .66rem; letter-spacing: .24em; text-transform: uppercase; color: var(--oak); white-space: nowrap; }
+.chair a.bk { margin-top: 12px; align-self: flex-start; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
+
 /* Quote: the one black band */
 .quote { background: var(--ink); color: var(--wall); padding-block: clamp(80px, 11vw, 150px); }
 .quote .eyebrow { color: #B9AC9C; }
@@ -142,6 +156,7 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; gap: 10px 3
     <a class="brand" href="#top"><img src="logo-wordmark.png" alt="Salon Polo" width="124" height="32"></a>
     <div class="links">
       <a href="#services">Services</a>
+      <a href="#team">Team</a>
       <a href="#salon">The Salon</a>
       <a href="#visit">Visit</a>
       <a class="btn" href="https://phorest.com/book/salons/salonpolobarbershop" target="_blank" rel="noopener">Book</a>
@@ -210,6 +225,35 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; gap: 10px 3
     <div class="foot">
       <span class="km">Proud Kevin Murphy salon</span>
       <a class="btn" href="https://phorest.com/book/salons/salonpolobarbershop" target="_blank" rel="noopener">Book a service</a>
+    </div>
+  </div>
+</section>
+
+<section class="team" id="team">
+  <div class="wrap">
+    <header>
+      <div>
+        <p class="eyebrow">The Team</p>
+        <h2>Behind <em>the chair</em></h2>
+      </div>
+      <p>Every cut, color and shave at Salon Polo comes from one of these chairs. Pick your stylist when you book.</p>
+    </header>
+    <div class="chairs">
+      <article class="chair">
+        <img src="team/henry.jpg" alt="Henry, owner of Salon Polo, finishing a skin fade at his chair" width="800" height="1000" loading="lazy">
+        <div class="who"><h3>Henry</h3><span class="role">Owner &amp; Stylist</span></div>
+        <a class="bk" href="https://phorest.com/book/salons/salonpolobarbershop" target="_blank" rel="noopener">Book with Henry</a>
+      </article>
+      <article class="chair">
+        <img src="team/alexis.jpg" alt="Alexis Ziehl, stylist, in front of the Kevin Murphy wall" width="800" height="1000" loading="lazy">
+        <div class="who"><h3>Alexis Ziehl</h3><span class="role">Stylist</span></div>
+        <a class="bk" href="https://phorest.com/book/salons/salonpolobarbershop" target="_blank" rel="noopener">Book with Alexis</a>
+      </article>
+      <article class="chair">
+        <img src="team/amber.jpg" alt="Amber Blevins, stylist, in front of the Kevin Murphy wall" width="800" height="1000" loading="lazy">
+        <div class="who"><h3>Amber Blevins</h3><span class="role">Stylist</span></div>
+        <a class="bk" href="https://phorest.com/book/salons/salonpolobarbershop" target="_blank" rel="noopener">Book with Amber</a>
+      </article>
     </div>
   </div>
 </section>
