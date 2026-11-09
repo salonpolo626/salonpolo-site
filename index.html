@@ -98,12 +98,13 @@ em { font-style: italic; }
 .team header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px 40px; margin-bottom: 48px; }
 .team h2 { font-size: clamp(2.8rem, 6.4vw, 5.6rem); line-height: .95; margin-top: 14px; }
 .team header p { margin: 0; color: var(--mute); max-width: 36ch; }
-.chairs { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 3vw, 40px); }
-@media (max-width: 760px) { .chairs { grid-template-columns: 1fr; max-width: 440px; } }
+.chairs { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 3vw, 40px); }
+@media (max-width: 980px) { .chairs { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .chairs { grid-template-columns: 1fr; max-width: 440px; } }
 .chair { min-width: 0; display: flex; flex-direction: column; }
 .chair img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; filter: saturate(.95); }
-.chair .who { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-top: 16px; border-top: 1px solid var(--ink); margin-top: 16px; }
-.chair h3 { font-size: 2rem; line-height: 1; }
+.chair .who { display: flex; flex-direction: column; gap: 6px; padding-top: 16px; border-top: 1px solid var(--ink); margin-top: 16px; }
+.chair h3 { font-size: 1.75rem; line-height: 1.05; }
 .chair .role { font-size: .66rem; letter-spacing: .24em; text-transform: uppercase; color: var(--oak); white-space: nowrap; }
 .chair a.bk { margin-top: 12px; align-self: flex-start; font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
 
@@ -253,6 +254,11 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; gap: 10px 3
         <img src="team/amber.jpg" alt="Amber Blevins, stylist, in front of the Kevin Murphy wall" width="800" height="1000" loading="lazy">
         <div class="who"><h3>Amber Blevins</h3><span class="role">Stylist</span></div>
         <a class="bk" href="https://phorest.com/book/salons/salonpolobarbershop" target="_blank" rel="noopener">Book with Amber</a>
+      </article>
+      <article class="chair">
+        <img src="team/colette.jpg" alt="Colette Oehlmann, barber, in front of the Kevin Murphy wall" width="800" height="1000" loading="lazy">
+        <div class="who"><h3>Colette Oehlmann</h3><span class="role">Barber</span></div>
+        <a class="bk" href="https://phorest.com/book/salons/salonpolobarbershop" target="_blank" rel="noopener">Book with Colette</a>
       </article>
     </div>
   </div>
