@@ -23,7 +23,7 @@
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { background: var(--wall); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; font-weight: 400; -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--wall); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; font-weight: 400; -webkit-font-smoothing: antialiased; }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--wall); }
 a { color: inherit; }
 .wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -47,19 +47,22 @@ em { font-style: italic; }
 .btn.ghost:hover { background: var(--ink); color: var(--wall) !important; }
 @media (max-width: 760px) { .links a:not(.btn) { display: none; } .btn { padding: 11px 16px; } }
 
-/* Cover */
-.issue { display: flex; justify-content: space-between; gap: 12px; padding-block: 18px 14px; font-size: 0.68rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--mute); border-bottom: 1px solid var(--ink); }
-@media (max-width: 560px) { .issue span:nth-child(2) { display: none; } }
-.masthead { padding-block: clamp(24px, 4vw, 52px); animation: rise 1s cubic-bezier(.2,.7,.2,1) both; }
-.masthead img { display: block; width: 100%; height: auto; }
+/* Hero: the photo leads, headline set over its lower edge */
+.hero { position: relative; overflow: hidden; background: var(--ink); }
+.hero .photo { display: block; width: 100%; height: min(clamp(480px, 56vw, 760px), calc(100svh - 76px)); min-height: 460px; object-fit: cover; object-position: 55% 45%; }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(17,17,17,0) 20%, rgba(17,17,17,.45) 50%, rgba(17,17,17,.85) 100%), linear-gradient(90deg, rgba(17,17,17,.45) 0%, rgba(17,17,17,0) 60%); pointer-events: none; }
+.hero-text { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; color: var(--wall); padding-block: 0 clamp(28px, 4.5vw, 64px); }
+.hero-text .kicker { margin: 0 0 14px; font-size: .7rem; letter-spacing: .26em; text-transform: uppercase; color: rgba(251,250,248,.85); }
+.hero-text h1 { font-size: clamp(2.5rem, 5.8vw, 5.4rem); line-height: .98; font-weight: 500; letter-spacing: -0.01em; max-width: 15ch; animation: rise 1s cubic-bezier(.2,.7,.2,1) both; }
+.hero-text h1 em { font-weight: 400; }
+.hero-text .sub { margin: 16px 0 0; max-width: 42ch; font-size: 1.05rem; color: rgba(251,250,248,.9); }
+.hero-text .cta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+.btn.light { background: var(--wall); border-color: var(--wall); color: var(--ink) !important; }
+.btn.light:hover { background: transparent; color: var(--wall) !important; }
+.btn.ghost.light { background: transparent; border-color: var(--wall); color: var(--wall) !important; }
+.btn.ghost.light:hover { background: var(--wall); color: var(--ink) !important; }
 @keyframes rise { from { opacity: .001; transform: translateY(18px); } to { opacity: 1; transform: none; } }
-.photo { display: block; width: 100%; height: clamp(320px, 56vw, 760px); object-fit: cover; object-position: 55% 45%; }
-.caption { display: grid; grid-template-columns: 1fr; gap: 20px; padding-block: 22px 0; }
-@media (min-width: 860px) { .caption { grid-template-columns: 3fr 5fr auto; align-items: end; gap: 40px; } }
-.caption .credit { font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--mute); margin: 0; }
-.caption .dek { font-family: var(--display); font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.2; margin: 0; max-width: 30ch; }
-.caption .cta { display: flex; gap: 10px; flex-wrap: wrap; }
-@media (prefers-reduced-motion: reduce) { .masthead { animation: none; } html { scroll-behavior: auto; } }
+@media (prefers-reduced-motion: reduce) { .hero-text h1 { animation: none; } html { scroll-behavior: auto; } }
 
 /* Letter */
 .letter { padding-block: clamp(80px, 11vw, 150px); }
@@ -183,18 +186,17 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; gap: 10px 3
   </div>
 </nav>
 
-<header id="top">
-  <div class="wrap">
-    <div class="issue"><span>Annapolis, Maryland</span><span>Salon &amp; Barbershop</span><span>A Kevin Murphy salon</span></div>
-    <h1 class="masthead"><img src="logo-wordmark.png" alt="Salon Polo, established 2020" width="2575" height="667"></h1>
-  </div>
+<header id="top" class="hero">
   <img class="photo" src="salon-floor.jpg" alt="Inside Salon Polo: black styling stations, a gloss-black front desk, Kevin Murphy shelves and the Salon Polo sign, est. 2020">
-  <div class="wrap caption">
-    <p class="credit">The floor, 626 Admiral Drive</p>
-    <p class="dek">A modern hair salon &amp; barbershop in Annapolis. Haircuts, color, styling and barbering for men, women and kids.</p>
-    <div class="cta">
-      <a class="btn" href="https://phorest.com/book/salons/salonpolobarbershop" target="_blank" rel="noopener">Book a chair</a>
-      <a class="btn ghost" href="#services">The menu</a>
+  <div class="hero-text">
+    <div class="wrap">
+      <p class="kicker">Annapolis, Maryland · Since 2020</p>
+      <h1>A modern salon &amp; <em>barbershop</em> in Annapolis.</h1>
+      <p class="sub">Haircuts, fades, color and barbering for men, women and kids.</p>
+      <div class="cta">
+        <a class="btn light" href="https://phorest.com/book/salons/salonpolobarbershop" target="_blank" rel="noopener">Book a chair</a>
+        <a class="btn ghost light" href="#services">The menu</a>
+      </div>
     </div>
   </div>
 </header>
