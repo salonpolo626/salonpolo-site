@@ -128,6 +128,7 @@ em { font-style: italic; }
 .rv-sum span:last-child { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: #B9AC9C; border-bottom: 1px solid #5A534B; padding-bottom: 2px; }
 .rv-grid { display: grid; grid-template-columns: 1fr; gap: 0 40px; margin-top: 56px; }
 @media (min-width: 640px) { .rv-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 640px) and (max-width: 1099px) { .rv-grid .rv-card:last-child:nth-child(odd) { grid-column: 1 / -1; } }
 @media (min-width: 1100px) { .rv-grid { grid-template-columns: repeat(var(--n, 4), 1fr); gap: 0 32px; } }
 .rv-card { border-top: 1px solid #3A3631; padding-block: 22px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
 .rv-card p { margin: 0; font-family: var(--display); font-size: 1.25rem; line-height: 1.35; color: #E9E3DA; display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
@@ -292,8 +293,8 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; gap: 10px 3
         <b id="rv-rating">5.0</b><span class="stars" id="rv-stars" aria-hidden="true">★★★★★</span><span id="rv-count">202 Google reviews</span>
       </a>
     </div>
-    <blockquote id="rv-lead">“My son left so happy with his haircut!”</blockquote>
-    <div class="meta" id="rv-lead-meta"><span class="stars" aria-label="5 out of 5 stars">★★★★★</span><span>Angie M., Google review</span></div>
+    <blockquote id="rv-lead" hidden></blockquote>
+    <div class="meta" id="rv-lead-meta" hidden></div>
     <div class="rv-grid" id="rv-grid" hidden></div>
     <div class="rv-foot">
       <a href="https://www.google.com/maps/search/?api=1&amp;query=Salon+Polo+%26+Barbershop+Annapolis+MD" id="rv-all" target="_blank" rel="noopener">Read all reviews on Google</a>
@@ -390,15 +391,17 @@ const GOOGLE_REVIEWS = { key: "AIzaSyDi8_w6A9v8WE134_ZMd9xmP0J1b-6R2IQ", placeId
       // Lead quote: the shortest five-star review reads best large.
       const lead = reviews.filter(r => r.rating === 5).sort((a, b) => a.text.length - b.text.length)[0] || reviews[0];
       if (lead.text.length <= 220) {
-        document.getElementById("rv-lead").textContent = "\u201C" + lead.text.trim() + "\u201D";
+        const leadEl = document.getElementById("rv-lead");
+        leadEl.textContent = "\u201C" + lead.text.trim() + "\u201D";
+        leadEl.hidden = false;
         const meta = document.getElementById("rv-lead-meta");
+        meta.hidden = false;
         meta.replaceChildren(el("span", "stars", starText(lead.rating)), el("span", null, (lead.authorAttribution?.displayName || "Google reviewer") + ", " + (lead.relativePublishTimeDescription || "Google review")));
       }
 
       const grid = document.getElementById("rv-grid");
       grid.replaceChildren();
       let cards = reviews.filter(r => r !== lead || lead.text.length > 220).slice(0, 4);
-      if (cards.length > 1 && cards.length % 2) cards = cards.slice(0, cards.length - 1); // keep rows even
       grid.style.setProperty("--n", cards.length);
       cards.forEach(r => {
         const card = el("article", "rv-card");
