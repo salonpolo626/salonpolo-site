@@ -140,8 +140,9 @@ em { font-style: italic; }
 
 /* The salon */
 .floor { display: grid; grid-template-columns: 1fr; }
-@media (min-width: 900px) { .floor { grid-template-columns: 7fr 5fr; } }
-.floor .pic { min-height: 360px; background: url("salon-floor.jpg") 80% 30% / 210% auto no-repeat; }
+@media (min-width: 900px) { .floor { grid-template-columns: 1fr 1fr; } }
+.floor .pic { aspect-ratio: 4 / 5; max-width: 100%; background: url("barber-chair.jpg") 45% 25% / cover no-repeat; }
+@media (min-width: 900px) { .floor .pic { aspect-ratio: auto; min-height: clamp(560px, 56vw, 780px); } }
 .floor .txt { padding-block: clamp(52px, 7vw, 100px); padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; justify-content: center; gap: 18px; min-width: 0; }
 @media (min-width: 900px) { .floor .txt { padding-left: 64px; padding-right: max(40px, env(safe-area-inset-right, 0px)); } }
 .floor h2 { font-size: clamp(2.3rem, 4vw, 3.6rem); line-height: 1.02; }
@@ -300,7 +301,7 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; gap: 10px 3
 </section>
 
 <section class="floor" id="salon">
-  <div class="pic" role="img" aria-label="Salon Polo's wall of Kevin Murphy products beside the front windows"></div>
+  <div class="pic" role="img" aria-label="A black Belmont barber chair with chrome frame on the salon floor"></div>
   <div class="txt">
     <p class="eyebrow">The Salon</p>
     <h2>A space built <em>for the work.</em></h2>
