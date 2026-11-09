@@ -107,7 +107,8 @@ em { font-style: italic; }
 .work h2 { font-size: clamp(2.8rem, 6.4vw, 5.6rem); line-height: .95; margin-top: 14px; }
 .work header p { margin: 0; color: var(--mute); max-width: 36ch; }
 .shots { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(8px, 1.4vw, 16px); }
-@media (min-width: 900px) { .shots { grid-template-columns: repeat(4, 1fr); } }
+.shots figure:first-child { grid-column: 1 / -1; }
+@media (min-width: 900px) { .shots { grid-template-columns: repeat(5, 1fr); } .shots figure:first-child { grid-column: auto; } }
 .shots figure { margin: 0; overflow: hidden; aspect-ratio: 1 / 1; background: var(--panel); min-width: 0; }
 .shots img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
 .shots figure:hover img { transform: scale(1.05); }
@@ -281,8 +282,9 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; gap: 10px 3
     <div class="shots">
       <figure><img src="work/texture.jpg" alt="Men's textured cut with movement on top and a soft taper" width="1100" height="1100" loading="lazy"></figure>
       <figure><img src="work/scissor.jpg" alt="All-scissor layered men's cut with natural movement" width="1100" height="1098" loading="lazy"></figure>
-      <figure><img src="work/beyond.jpg" alt="Profile of a tailored men's cut with length left at the back" width="825" height="850" loading="lazy"></figure>
-      <figure><img src="work/fade.jpg" style="object-position: 50% 15%" alt="Profile of a short men's cut with a skin fade and textured top" width="796" height="1100" loading="lazy"></figure>
+      <figure><img src="work/beyond.jpg" alt="Profile of a tailored men's cut with length left at the back" width="825" height="825" loading="lazy"></figure>
+      <figure><img src="work/fade.jpg" style="object-position: 50% 32%" alt="Profile of a short men's cut with a skin fade and textured top" width="796" height="1100" loading="lazy"></figure>
+      <figure><img src="work/mullet.jpg" alt="Profile of a textured modern mullet with a taper fade" width="1100" height="1100" loading="lazy"></figure>
     </div>
     <a class="ig" href="https://www.instagram.com/salonpolo/" target="_blank" rel="noopener">See more on Instagram · @salonpolo</a>
   </div>
