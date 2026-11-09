@@ -117,6 +117,22 @@ em { font-style: italic; }
 .quote .meta { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 32px; color: #B9AC9C; font-size: .9rem; }
 .stars { color: var(--wall); letter-spacing: .2em; }
 
+.rv-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px 32px; }
+.rv-sum { display: inline-flex; align-items: baseline; gap: 12px; text-decoration: none; color: var(--wall); }
+.rv-sum b { font-family: var(--display); font-weight: 500; font-size: 2.2rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.rv-sum span:last-child { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: #B9AC9C; border-bottom: 1px solid #5A534B; padding-bottom: 2px; }
+.rv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0 40px; margin-top: 56px; }
+.rv-card { border-top: 1px solid #3A3631; padding-block: 22px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+.rv-card p { margin: 0; font-family: var(--display); font-size: 1.25rem; line-height: 1.35; color: #E9E3DA; display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
+.rv-who { display: flex; align-items: center; gap: 10px; font-size: .85rem; color: #B9AC9C; }
+.rv-who img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
+.rv-who a { color: var(--wall); text-decoration: none; }
+.rv-who a:hover { text-decoration: underline; }
+.rv-card .stars { font-size: .8rem; }
+.rv-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; margin-top: 36px; font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; }
+.rv-foot a { color: var(--wall); text-decoration: none; border-bottom: 1px solid var(--wall); padding-bottom: 2px; }
+.rv-powered { color: #8F857A; }
+
 /* The salon */
 .floor { display: grid; grid-template-columns: 1fr; }
 @media (min-width: 900px) { .floor { grid-template-columns: 7fr 5fr; } }
@@ -262,11 +278,21 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; gap: 10px 3
   </div>
 </section>
 
-<section class="quote">
+<section class="quote" id="reviews">
   <div class="wrap">
-    <p class="eyebrow">Overheard</p>
-    <blockquote>“My son left so happy with his haircut!”</blockquote>
-    <div class="meta"><span class="stars" aria-label="5 out of 5 stars">★★★★★</span><span>Angie M., Google review</span><span>5.0 average across 202 reviews</span></div>
+    <div class="rv-top">
+      <p class="eyebrow">Overheard</p>
+      <a class="rv-sum" id="rv-link" href="https://www.google.com/maps/search/?api=1&amp;query=Salon+Polo+%26+Barbershop+Annapolis+MD" target="_blank" rel="noopener">
+        <b id="rv-rating">5.0</b><span class="stars" id="rv-stars" aria-hidden="true">★★★★★</span><span id="rv-count">202 Google reviews</span>
+      </a>
+    </div>
+    <blockquote id="rv-lead">“My son left so happy with his haircut!”</blockquote>
+    <div class="meta" id="rv-lead-meta"><span class="stars" aria-label="5 out of 5 stars">★★★★★</span><span>Angie M., Google review</span></div>
+    <div class="rv-grid" id="rv-grid" hidden></div>
+    <div class="rv-foot">
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Salon+Polo+%26+Barbershop+Annapolis+MD" id="rv-all" target="_blank" rel="noopener">Read all reviews on Google</a>
+      <span class="rv-powered" id="rv-powered" hidden>Reviews powered by Google</span>
+    </div>
   </div>
 </section>
 
@@ -320,5 +346,83 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; gap: 10px 3
   </div>
 </footer>
 
+<script>
+/* Live Google reviews.
+   Paste the restricted browser key and the salon's Place ID below.
+   Until both are filled in, the section shows the saved rating, count and quote. */
+const GOOGLE_REVIEWS = { key: "", placeId: "" };
+
+(function () {
+  const cfg = GOOGLE_REVIEWS;
+  const section = document.getElementById("reviews");
+  if (!cfg.key || !cfg.placeId || !section) return;
+
+  const starText = n => "★★★★★".slice(0, Math.round(n)) + "☆☆☆☆☆".slice(0, 5 - Math.round(n));
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+
+  function loadMaps() {
+    (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({ key: cfg.key, v: "weekly" });
+  }
+
+  async function run() {
+    try {
+      loadMaps();
+      const { Place } = await google.maps.importLibrary("places");
+      const place = new Place({ id: cfg.placeId });
+      await place.fetchFields({ fields: ["rating", "userRatingCount", "reviews", "googleMapsURI"] });
+
+      if (place.rating) {
+        document.getElementById("rv-rating").textContent = place.rating.toFixed(1);
+        document.getElementById("rv-stars").textContent = starText(place.rating);
+      }
+      if (place.userRatingCount) document.getElementById("rv-count").textContent = place.userRatingCount.toLocaleString() + " Google reviews";
+      if (place.googleMapsURI) {
+        document.getElementById("rv-link").href = place.googleMapsURI;
+        document.getElementById("rv-all").href = place.googleMapsURI;
+      }
+
+      const reviews = (place.reviews || []).filter(r => r.text && r.rating >= 4);
+      if (!reviews.length) return;
+
+      // Lead quote: the shortest five-star review reads best large.
+      const lead = reviews.filter(r => r.rating === 5).sort((a, b) => a.text.length - b.text.length)[0] || reviews[0];
+      if (lead.text.length <= 220) {
+        document.getElementById("rv-lead").textContent = "\u201C" + lead.text.trim() + "\u201D";
+        const meta = document.getElementById("rv-lead-meta");
+        meta.replaceChildren(el("span", "stars", starText(lead.rating)), el("span", null, (lead.authorAttribution?.displayName || "Google reviewer") + ", " + (lead.relativePublishTimeDescription || "Google review")));
+      }
+
+      const grid = document.getElementById("rv-grid");
+      grid.replaceChildren();
+      reviews.filter(r => r !== lead || lead.text.length > 220).slice(0, 4).forEach(r => {
+        const card = el("article", "rv-card");
+        card.append(el("span", "stars", starText(r.rating)));
+        card.append(el("p", null, r.text.trim()));
+        const who = el("div", "rv-who");
+        const a = r.authorAttribution || {};
+        if (a.photoURI) { const img = el("img"); img.src = a.photoURI; img.alt = ""; img.referrerPolicy = "no-referrer"; who.append(img); }
+        const name = a.uri ? Object.assign(el("a", null, a.displayName || "Google reviewer"), { href: a.uri, target: "_blank", rel: "noopener" }) : el("span", null, a.displayName || "Google reviewer");
+        who.append(name, el("span", null, "· " + (r.relativePublishTimeDescription || "")));
+        card.append(who);
+        grid.append(card);
+      });
+      grid.hidden = grid.children.length === 0;
+      document.getElementById("rv-powered").hidden = false;
+    } catch (err) {
+      console.warn("Google reviews could not load; showing saved reviews.", err);
+    }
+  }
+
+  // Ask Google only when a visitor gets near the reviews, to keep calls low.
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(entries => {
+      if (entries.some(e => e.isIntersecting)) { io.disconnect(); run(); }
+    }, { rootMargin: "600px 0px" });
+    io.observe(section);
+  } else {
+    run();
+  }
+})();
+</script>
 </body>
 </html>
