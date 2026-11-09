@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Salon Polo | Hair Salon &amp; Barbershop in Annapolis, MD</title>
+<meta name="description" content="Salon Polo & Barbershop: cuts, color, barbering and curly hair in Annapolis, Maryland. Established 2020.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap">
+<style>
+/* Layout: a bright magazine spread. Masthead type sits on white above a full-bleed photo of the floor, like a cover; one inverted black band for the client quote, echoing the black stations. Single light look by choice, matching the salon. */
+:root {
+  --wall: #FBFAF8;       /* gallery-white walls */
+  --panel: #F1EFEB;      /* a step down, for the menu */
+  --ink: #111111;        /* black stations, type, buttons */
+  --mute: #6F6A63;       /* warm grey for secondary text */
+  --oak: #8C6A4B;        /* oak floor tone, used only for tiny labels */
+  --rule: #D9D5CE;       /* hairlines */
+  --display: "Cormorant Garamond", "Cormorant", Garamond, "Times New Roman", serif;
+  --body: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--wall); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; font-weight: 400; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--wall); }
+a { color: inherit; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+@media (min-width: 760px) { .wrap { padding-left: max(40px, env(safe-area-inset-left, 0px)); padding-right: max(40px, env(safe-area-inset-right, 0px)); } }
+.eyebrow { font-size: 0.7rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--oak); font-weight: 500; margin: 0; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; margin: 0; }
+em { font-style: italic; }
+:focus-visible { outline: 1px solid var(--ink); outline-offset: 4px; }
+
+/* Nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--wall) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.brand { font-family: var(--display); font-size: 1.3rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; }
+.links { display: flex; gap: 30px; align-items: center; font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; }
+.links a { text-decoration: none; color: var(--mute); transition: color .2s; }
+.links a:hover { color: var(--ink); }
+.btn { display: inline-block; text-decoration: none; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; padding: 13px 24px; border: 1px solid var(--ink); background: var(--ink); color: var(--wall) !important; transition: background .2s, color .2s; }
+.btn:hover { background: transparent; color: var(--ink) !important; }
+.btn.ghost { background: transparent; color: var(--ink) !important; }
+.btn.ghost:hover { background: var(--ink); color: var(--wall) !important; }
+@media (max-width: 760px) { .links a:not(.btn) { display: none; } .btn { padding: 11px 16px; } }
+
+/* Cover */
+.issue { display: flex; justify-content: space-between; gap: 12px; padding-block: 18px 14px; font-size: 0.68rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--mute); border-bottom: 1px solid var(--ink); }
+@media (max-width: 560px) { .issue span:nth-child(2) { display: none; } }
+.masthead { font-size: clamp(4rem, 18vw, 16rem); line-height: .8; letter-spacing: -0.035em; font-weight: 500; padding-block: 0.06em 0.1em; white-space: nowrap; animation: rise 1s cubic-bezier(.2,.7,.2,1) both; }
+.masthead em { font-weight: 400; }
+@keyframes rise { from { opacity: .001; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.photo { display: block; width: 100%; height: clamp(320px, 56vw, 760px); object-fit: cover; object-position: 55% 45%; }
+.caption { display: grid; grid-template-columns: 1fr; gap: 20px; padding-block: 22px 0; }
+@media (min-width: 860px) { .caption { grid-template-columns: 3fr 5fr auto; align-items: end; gap: 40px; } }
+.caption .credit { font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--mute); margin: 0; }
+.caption .dek { font-family: var(--display); font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.2; margin: 0; max-width: 30ch; }
+.caption .cta { display: flex; gap: 10px; flex-wrap: wrap; }
+@media (prefers-reduced-motion: reduce) { .masthead { animation: none; } html { scroll-behavior: auto; } }
+
+/* Letter */
+.letter { padding-block: clamp(80px, 11vw, 150px); }
+.letter .grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+@media (min-width: 900px) { .letter .grid { grid-template-columns: 5fr 6fr; gap: 72px; } }
+.letter h2 { font-size: clamp(2.4rem, 4.8vw, 4.2rem); line-height: 1.02; margin-top: 16px; }
+.letter .copy { max-width: 58ch; min-width: 0; padding-top: 6px; }
+.letter .copy p { margin: 0 0 1.1em; color: #2E2B27; font-size: 1.08rem; line-height: 1.7; }
+.letter .copy p:first-child::first-letter { font-family: var(--display); float: left; font-size: 5rem; line-height: .78; padding: 8px 12px 0 0; font-weight: 500; }
+.sig { font-family: var(--display); font-style: italic; font-size: 1.4rem; color: var(--ink) !important; }
+
+/* Menu */
+.carte { background: var(--panel); padding-block: clamp(72px, 9vw, 130px); }
+.carte header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px 40px; margin-bottom: 52px; }
+.carte h2 { font-size: clamp(2.8rem, 6.4vw, 5.6rem); line-height: .95; margin-top: 14px; }
+.carte header p { margin: 0; color: var(--mute); max-width: 38ch; }
+.menu { display: grid; grid-template-columns: 1fr; gap: 0 80px; }
+@media (min-width: 860px) { .menu { grid-template-columns: 1fr 1fr; } }
+.course { padding-block: 26px; border-top: 1px solid var(--ink); min-width: 0; }
+.course h3 { font-size: 2rem; margin-bottom: 12px; display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
+.course h3 small { font-family: var(--body); font-size: .66rem; letter-spacing: .24em; text-transform: uppercase; color: var(--oak); }
+.item { display: flex; align-items: baseline; gap: 10px; padding-block: 7px; }
+.item .name { flex: 0 1 auto; min-width: 0; }
+.item .dots { flex: 1; border-bottom: 1px dotted #A9A39A; transform: translateY(-4px); min-width: 20px; }
+.item .price { flex: none; font-family: var(--display); font-size: 1.25rem; font-weight: 500; font-variant-numeric: tabular-nums; }
+.item .price.ask { font-family: var(--body); font-size: .68rem; font-weight: 400; letter-spacing: .18em; text-transform: uppercase; color: var(--mute); }
+.items { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px; }
+.items li { padding-block: 6px; border-bottom: 1px dotted #C4BEB5; }
+@media (max-width: 480px) { .items { grid-template-columns: 1fr; } }
+.course .note { margin: 6px 0 0; font-size: .92rem; color: var(--mute); }
+.carte .foot { margin-top: 44px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
+.km { font-size: .7rem; letter-spacing: .26em; text-transform: uppercase; color: var(--mute); }
+
+/* Quote: the one black band */
+.quote { background: var(--ink); color: var(--wall); padding-block: clamp(80px, 11vw, 150px); }
+.quote .eyebrow { color: #B9AC9C; }
+.quote blockquote { margin: 22px 0 0; max-width: 17ch; font-family: var(--display); font-style: italic; font-size: clamp(2.6rem, 7vw, 6rem); line-height: 1; }
+.quote .meta { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 32px; color: #B9AC9C; font-size: .9rem; }
+.stars { color: var(--wall); letter-spacing: .2em; }
+
+/* The salon */
+.floor { display: grid; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .floor { grid-template-columns: 7fr 5fr; } }
+.floor .pic { min-height: 360px; background: url("salon-floor.jpg") 80% 30% / 210% auto no-repeat; }
+.floor .txt { padding-block: clamp(52px, 7vw, 100px); padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; justify-content: center; gap: 18px; min-width: 0; }
+@media (min-width: 900px) { .floor .txt { padding-left: 64px; padding-right: max(40px, env(safe-area-inset-right, 0px)); } }
+.floor h2 { font-size: clamp(2.3rem, 4vw, 3.6rem); line-height: 1.02; }
+.floor p { margin: 0; color: #2E2B27; max-width: 44ch; }
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 12px; border-top: 1px solid var(--ink); padding-top: 20px; }
+.facts b { display: block; font-family: var(--display); font-weight: 500; font-size: 2.6rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.facts span { font-size: .66rem; letter-spacing: .22em; text-transform: uppercase; color: var(--mute); }
+
+/* Visit */
+.visit { padding-block: clamp(72px, 9vw, 130px); border-top: 1px solid var(--rule); }
+.visit .grid { display: grid; grid-template-columns: 1fr; gap: 44px; }
+@media (min-width: 860px) { .visit .grid { grid-template-columns: 5fr 4fr 3fr; gap: 56px; } }
+.visit h2 { font-size: clamp(2.8rem, 5.6vw, 4.8rem); line-height: .98; margin-top: 14px; }
+.block h3 { font-family: var(--body); font-size: .7rem; letter-spacing: .26em; text-transform: uppercase; color: var(--oak); font-weight: 500; margin-bottom: 14px; }
+.block address { font-style: normal; font-size: 1.05rem; }
+.phone { font-family: var(--display); font-size: 2.1rem; font-weight: 500; text-decoration: none; display: inline-block; margin-top: 10px; user-select: all; }
+.hours { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.hours td { padding: 8px 0; border-bottom: 1px solid var(--rule); }
+.hours td:last-child { text-align: right; }
+.hours tr.closed td { color: var(--mute); }
+.dir { display: inline-block; margin-top: 16px; font-size: .74rem; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
+
+footer { border-top: 1px solid var(--ink); padding-block: 26px; color: var(--mute); font-size: .8rem; }
+footer .social { display: flex; gap: 20px; flex-wrap: wrap; }
+footer .social a { text-decoration: none; color: var(--ink); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 32px; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top">Salon Polo</a>
+    <div class="links">
+      <a href="#services">Services</a>
+      <a href="#salon">The Salon</a>
+      <a href="#visit">Visit</a>
+      <a class="btn" href="https://phorest.com/book/salons/salonpolobarbershop" target="_blank" rel="noopener">Book</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="wrap">
+    <div class="issue"><span>Annapolis, Maryland</span><span>Salon &amp; Barbershop</span><span>Est. 2020</span></div>
+    <h1 class="masthead">Salon <em>Polo</em></h1>
+  </div>
+  <img class="photo" src="salon-floor.jpg" alt="Inside Salon Polo: black styling stations, a gloss-black front desk, Kevin Murphy shelves and the Salon Polo sign, est. 2020">
+  <div class="wrap caption">
+    <p class="credit">The floor, 626 Admiral Drive</p>
+    <p class="dek">A modern hair salon &amp; barbershop in Annapolis. Haircuts, color, styling and barbering for women, men and kids.</p>
+    <div class="cta">
+      <a class="btn" href="https://phorest.com/book/salons/salonpolobarbershop" target="_blank" rel="noopener">Book a chair</a>
+      <a class="btn ghost" href="#services">The menu</a>
+    </div>
+  </div>
+</header>
+
+<section class="letter">
+  <div class="wrap grid">
+    <div>
+      <p class="eyebrow">From the chair</p>
+      <h2>One room. <em>Two crafts.</em> No compromise on either.</h2>
+    </div>
+    <div class="copy">
+      <p>Salon Polo opened in 2020 with a simple idea: a proper salon and a proper barbershop should be able to share a floor. A blowout and a hot-towel shave deserve the same attention, and so does a kid's first real haircut.</p>
+      <p>We keep it to four chairs on purpose. You get time, a conversation, and a stylist who knows your hair by the second visit. We work with Kevin Murphy color and care, and we'll send you home with exactly what you need, nothing more.</p>
+      <p class="sig">Henry, owner &amp; stylist</p>
+    </div>
+  </div>
+</section>
+
+<section class="carte" id="services">
+  <div class="wrap">
+    <header>
+      <div>
+        <p class="eyebrow">The Menu</p>
+        <h2>Services, <em>à la carte</em></h2>
+      </div>
+      <p>Precision cuts, blonding, fades and beard work, with premium professional products. Every service starts with a consultation.</p>
+    </header>
+    <div class="menu">
+      <div class="course">
+        <h3>The Cut <small>Haircuts &amp; Styling</small></h3>
+        <ul class="items"><li>Women's haircut &amp; styling</li><li>Men's haircut</li><li>Short, midlength &amp; long cuts</li><li>Skin fades</li><li>Razor &amp; clipper fades</li><li>Kids' haircuts</li></ul>
+      </div>
+      <div class="course">
+        <h3>The Color <small>Color &amp; Blonding</small></h3>
+        <ul class="items"><li>Blonding</li><li>Grey blending</li><li>Toner &amp; gloss refresh</li><li>Root touch-ups</li></ul>
+      </div>
+      <div class="course">
+        <h3>The Chair <small>Barbering</small></h3>
+        <ul class="items"><li>Beard trim</li><li>Hot towel shave</li><li>Shape-ups &amp; line-ups</li><li>Beard sculpting</li><li>Haircut &amp; beard combo</li></ul>
+      </div>
+      <div class="course">
+        <h3>The Curl <small>Specialty</small></h3>
+        <div class="item"><span class="name">Specialty curly haircut &amp; curl definition</span><span class="dots"></span><span class="price">$120</span></div>
+        <p class="note">Cut dry, curl by curl, then styled so you can repeat it at home.</p>
+      </div>
+    </div>
+    <div class="foot">
+      <span class="km">Proud Kevin Murphy salon</span>
+      <a class="btn" href="https://phorest.com/book/salons/salonpolobarbershop" target="_blank" rel="noopener">Book a service</a>
+    </div>
+  </div>
+</section>
+
+<section class="quote">
+  <div class="wrap">
+    <p class="eyebrow">Overheard</p>
+    <blockquote>“My son left so happy with his haircut!”</blockquote>
+    <div class="meta"><span class="stars" aria-label="5 out of 5 stars">★★★★★</span><span>Angie M., Google review</span><span>5.0 average across 117 reviews</span></div>
+  </div>
+</section>
+
+<section class="floor" id="salon">
+  <div class="pic" role="img" aria-label="Salon Polo's wall of Kevin Murphy products beside the front windows"></div>
+  <div class="txt">
+    <p class="eyebrow">The Salon</p>
+    <h2>Gloss black, light oak, and <em>good light.</em></h2>
+    <p>Sunlight from Admiral Drive, a wall of Kevin Murphy, and stations built for both scissors and straight razors. Pull up a chair.</p>
+    <div class="facts">
+      <div><b>4</b><span>Chairs</span></div>
+      <div><b>2020</b><span>Established</span></div>
+      <div><b>5.0</b><span>Google rating</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap grid">
+    <div>
+      <p class="eyebrow">Visit &amp; Book</p>
+      <h2>Your chair is <em>waiting.</em></h2>
+      <div style="margin-top:30px"><a class="btn" href="https://phorest.com/book/salons/salonpolobarbershop" target="_blank" rel="noopener">Book online</a></div>
+    </div>
+    <div class="block">
+      <h3>Find us</h3>
+      <address>626 Admiral Drive, Suite E<br>Annapolis, MD 21401</address>
+      <a class="phone" href="tel:+14439499786">(443) 949-9786</a><br>
+      <span style="display:block;margin-top:6px;color:var(--mute);user-select:all">contact@salonpolo.com</span>
+      <a class="dir" href="https://www.google.com/maps/search/?api=1&amp;query=626+Admiral+Dr+Suite+E+Annapolis+MD+21401" target="_blank" rel="noopener">Get directions</a>
+    </div>
+    <div class="block">
+      <h3>Hours</h3>
+      <table class="hours">
+        <tr class="closed"><td>Monday</td><td>Closed</td></tr>
+        <tr><td>Tuesday</td><td>10 – 7</td></tr>
+        <tr><td>Wednesday</td><td>10 – 7</td></tr>
+        <tr><td>Thursday</td><td>10 – 7</td></tr>
+        <tr><td>Friday</td><td>10 – 7</td></tr>
+        <tr><td>Saturday</td><td>9 – 2</td></tr>
+        <tr class="closed"><td>Sunday</td><td>Closed</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Salon Polo &amp; Barbershop · Annapolis, Maryland</span>
+    <span class="social"><a href="https://www.instagram.com/salonpolo/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/thesalonpolo/" target="_blank" rel="noopener">Facebook</a><span>contact@salonpolo.com</span></span>
+  </div>
+</footer>
+
+</body>
+</html>
