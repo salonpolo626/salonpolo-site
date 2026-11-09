@@ -128,7 +128,7 @@ em { font-style: italic; }
 .rv-sum span:last-child { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: #B9AC9C; border-bottom: 1px solid #5A534B; padding-bottom: 2px; }
 .rv-grid { display: grid; grid-template-columns: 1fr; gap: 0 40px; margin-top: 56px; }
 @media (min-width: 640px) { .rv-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1100px) { .rv-grid { grid-template-columns: repeat(4, 1fr); gap: 0 32px; } }
+@media (min-width: 1100px) { .rv-grid { grid-template-columns: repeat(var(--n, 4), 1fr); gap: 0 32px; } }
 .rv-card { border-top: 1px solid #3A3631; padding-block: 22px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
 .rv-card p { margin: 0; font-family: var(--display); font-size: 1.25rem; line-height: 1.35; color: #E9E3DA; display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
 .rv-who { display: flex; align-items: center; gap: 10px; font-size: .85rem; color: #B9AC9C; }
@@ -382,7 +382,9 @@ const GOOGLE_REVIEWS = { key: "AIzaSyDi8_w6A9v8WE134_ZMd9xmP0J1b-6R2IQ", placeId
         document.getElementById("rv-all").href = place.googleMapsURI;
       }
 
-      const reviews = (place.reviews || []).filter(r => r.text && r.rating >= 4);
+      // Skip reviews about children; the site focuses on adult cuts.
+      const KIDS = /\b(kids?|child|children|son|sons|daughters?|toddlers?|baby|babies|little (one|boy|girl)s?|boys?|girls?|grandsons?|granddaughters?|teens?|teenagers?)\b/i;
+      const reviews = (place.reviews || []).filter(r => r.text && r.rating >= 4 && !KIDS.test(r.text));
       if (!reviews.length) return;
 
       // Lead quote: the shortest five-star review reads best large.
@@ -395,7 +397,10 @@ const GOOGLE_REVIEWS = { key: "AIzaSyDi8_w6A9v8WE134_ZMd9xmP0J1b-6R2IQ", placeId
 
       const grid = document.getElementById("rv-grid");
       grid.replaceChildren();
-      reviews.filter(r => r !== lead || lead.text.length > 220).slice(0, 4).forEach(r => {
+      let cards = reviews.filter(r => r !== lead || lead.text.length > 220).slice(0, 4);
+      if (cards.length > 1 && cards.length % 2) cards = cards.slice(0, cards.length - 1); // keep rows even
+      grid.style.setProperty("--n", cards.length);
+      cards.forEach(r => {
         const card = el("article", "rv-card");
         card.append(el("span", "stars", starText(r.rating)));
         card.append(el("p", null, r.text.trim()));
