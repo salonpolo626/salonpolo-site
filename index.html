@@ -142,20 +142,17 @@ em { font-style: italic; }
 .rv-foot a { color: var(--wall); text-decoration: none; border-bottom: 1px solid var(--wall); padding-bottom: 2px; }
 .rv-powered { color: #8F857A; }
 
-/* The salon */
-.floor { display: grid; grid-template-columns: 1fr; }
-@media (min-width: 900px) { .floor { grid-template-columns: 1fr 1fr; } }
-.floor .pic { position: relative; overflow: hidden; aspect-ratio: 4 / 5; max-width: 100%; background: var(--ink); }
-.floor .pic-img { position: absolute; inset: 0; background: url("barber-chair.jpg") 45% 25% / cover no-repeat; transform-origin: 50% 55%; transform: scale(var(--zoom, 1)); will-change: transform; }
-.floor .pic::after { content: ""; position: absolute; inset: auto 0 0 0; height: 30%; background: linear-gradient(180deg, rgba(17,17,17,0), rgba(17,17,17,.55)); pointer-events: none; }
-.floor .pic-cap { position: absolute; z-index: 2; left: max(24px, env(safe-area-inset-left, 0px)); bottom: 24px; display: flex; align-items: center; gap: 12px; color: var(--wall); font-size: .7rem; letter-spacing: .26em; text-transform: uppercase; }
-.floor .pic-cap::before { content: ""; width: 28px; height: 1px; background: currentColor; opacity: .8; }
-@media (min-width: 900px) { .floor .pic-cap { left: 40px; bottom: 36px; } }
-@media (min-width: 900px) { .floor .pic { aspect-ratio: auto; min-height: clamp(560px, 56vw, 780px); } }
-.floor .txt { padding-block: clamp(52px, 7vw, 100px); padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; justify-content: center; gap: 18px; min-width: 0; }
-@media (min-width: 900px) { .floor .txt { padding-left: 64px; padding-right: max(40px, env(safe-area-inset-right, 0px)); } }
-.floor h2 { font-size: clamp(2.3rem, 4vw, 3.6rem); line-height: 1.02; }
-.floor p { margin: 0; color: #2E2B27; max-width: 44ch; }
+/* The salon: text beside the whole chair, framed like a magazine plate */
+.floor { padding-block: clamp(80px, 11vw, 150px); border-top: 1px solid var(--rule); }
+.floor-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+@media (min-width: 900px) { .floor-grid { grid-template-columns: 6fr 5fr; gap: clamp(56px, 7vw, 112px); } }
+.floor .txt { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.floor h2 { font-size: clamp(2.6rem, 5.2vw, 4.8rem); line-height: .98; }
+.floor .txt p:not(.eyebrow) { margin: 0; color: #2E2B27; max-width: 44ch; font-size: 1.08rem; line-height: 1.7; }
+.floor figure { margin: 0; min-width: 0; }
+.floor .pic { position: relative; overflow: hidden; aspect-ratio: 4 / 5; max-width: 100%; background: var(--panel); }
+.floor .pic-img { position: absolute; inset: 0; background: url("barber-chair.jpg") 50% 50% / cover no-repeat; transform-origin: 50% 60%; transform: scale(var(--zoom, 1)); will-change: transform; }
+.floor figcaption { display: flex; justify-content: space-between; gap: 16px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--ink); font-size: .68rem; letter-spacing: .24em; text-transform: uppercase; color: var(--mute); }
 .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 12px; border-top: 1px solid var(--ink); padding-top: 20px; }
 .facts b { display: block; font-family: var(--display); font-weight: 500; font-size: 2.6rem; line-height: 1; font-variant-numeric: tabular-nums; }
 .facts span { font-size: .66rem; letter-spacing: .22em; text-transform: uppercase; color: var(--mute); }
@@ -320,14 +317,16 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; gap: 10px 3
 </section>
 
 <section class="floor" id="salon">
-  <div class="pic">
-    <div class="pic-img" role="img" aria-label="A black Belmont barber chair with chrome frame on the salon floor"></div>
-    <span class="pic-cap">The chair · Belmont</span>
-  </div>
-  <div class="txt">
-    <p class="eyebrow">The Salon</p>
-    <h2>A space built <em>for the work.</em></h2>
-    <p>Four chairs, plenty of natural light, and a full wall of Kevin Murphy. It's a calm, comfortable room where you can settle in, talk, or just switch off while we take care of the rest.</p>
+  <div class="wrap floor-grid">
+    <div class="txt">
+      <p class="eyebrow">The Salon</p>
+      <h2>A space built <em>for the work.</em></h2>
+      <p>Four chairs, plenty of natural light, and a full wall of Kevin Murphy. It's a calm, comfortable room where you can settle in, talk, or just switch off while we take care of the rest.</p>
+    </div>
+    <figure>
+      <div class="pic"><div class="pic-img" role="img" aria-label="A black Belmont barber chair with chrome frame on the salon floor"></div></div>
+      <figcaption><span>The chair</span><span>Belmont</span></figcaption>
+    </figure>
   </div>
 </section>
 
