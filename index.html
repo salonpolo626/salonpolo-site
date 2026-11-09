@@ -90,7 +90,7 @@ em { font-style: italic; }
 .item .price { flex: none; font-family: var(--display); font-size: 1.25rem; font-weight: 500; font-variant-numeric: tabular-nums; }
 .item .price.ask { font-family: var(--body); font-size: .68rem; font-weight: 400; letter-spacing: .18em; text-transform: uppercase; color: var(--mute); }
 .items { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
-.items li { display: flex; align-items: baseline; gap: 10px; padding-block: 7px; }
+.items li { padding-block: 8px; border-bottom: 1px dotted #C4BEB5; }
 .items .name { flex: 0 1 auto; min-width: 0; }
 .items .dots { flex: 1; border-bottom: 1px dotted #A9A39A; transform: translateY(-4px); min-width: 16px; }
 .items .price { flex: none; font-family: var(--display); font-size: 1.2rem; font-weight: 500; font-variant-numeric: tabular-nums; }
@@ -228,18 +228,17 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; gap: 10px 3
     <div class="menu">
       <div class="course">
         <h3>The Cut <small>Haircuts</small></h3>
-        <ul class="items"><li><span class="name">Short haircut</span><span class="dots"></span><span class="price">$38</span></li><li><span class="name">Skin fade</span><span class="dots"></span><span class="price">$46</span></li><li><span class="name">Medium length dry cut</span><span class="dots"></span><span class="price">$43</span></li><li><span class="name">Long dry cut</span><span class="dots"></span><span class="price">$52</span></li><li><span class="name">Undercut</span><span class="dots"></span><span class="price">$22</span></li><li><span class="name">Neckline cleanup</span><span class="dots"></span><span class="price">$22</span></li><li><span class="name">Fringe / face framing only</span><span class="dots"></span><span class="price">$22</span></li><li><span class="name">Child's haircut, 10 &amp; under</span><span class="dots"></span><span class="price">$38</span></li></ul>
+        <ul class="items"><li>Short haircut</li><li>Skin fade</li><li>Medium length dry cut</li><li>Long dry cut</li><li>Undercut</li><li>Neckline cleanup</li><li>Fringe / face framing only</li><li>Child's haircut, 10 &amp; under</li></ul>
       </div>
       <div class="course">
         <h3>The Chair <small>Barbering</small></h3>
-        <ul class="items"><li><span class="name">Traditional hot towel shave</span><span class="dots"></span><span class="price">$53</span></li><li><span class="name">Hot towel head shave</span><span class="dots"></span><span class="price">$53</span></li><li><span class="name">Hot towel premium goatee / beard sculpting</span><span class="dots"></span><span class="price">$36</span></li><li><span class="name">Express goatee / beard sculpting</span><span class="dots"></span><span class="price">$22</span></li><li><span class="name">Design work</span><span class="dots"></span><span class="price">$10</span></li></ul>
+        <ul class="items"><li>Traditional hot towel shave</li><li>Hot towel head shave</li><li>Hot towel premium goatee / beard sculpting</li><li>Express goatee / beard sculpting</li><li>Design work</li></ul>
       </div>
       <div class="course">
         <h3>The Color <small>Gray blending &amp; gloss</small></h3>
-        <ul class="items"><li><span class="name">Men's gray blending</span><span class="dots"></span><span class="price">$48</span></li><li><span class="name">Gloss / tone refresh</span><span class="dots"></span><span class="price">$48</span></li></ul>
+        <ul class="items"><li>Men's gray blending</li><li>Gloss / tone refresh</li></ul>
       </div>
     </div>
-    <p class="price-note">Prices shown are starting prices. Final price depends on your stylist's level and your hair.</p>
     <div class="foot">
       <span class="km">Proud Kevin Murphy salon</span>
       <a class="btn" href="https://phorest.com/book/salons/salonpolobarbershop" target="_blank" rel="noopener">Book a service</a>
