@@ -81,7 +81,6 @@ em { font-style: italic; }
 .carte header p { margin: 0; color: var(--mute); max-width: 38ch; }
 .menu { display: grid; grid-template-columns: 1fr; gap: 0 80px; }
 @media (min-width: 860px) { .menu { grid-template-columns: repeat(3, 1fr); gap: 0 56px; } }
-@media (min-width: 860px) and (max-width: 1100px) { .items { grid-template-columns: 1fr; } }
 .course { padding-block: 26px; border-top: 1px solid var(--ink); min-width: 0; }
 .course h3 { font-size: 2rem; margin-bottom: 12px; display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
 .course h3 small { font-family: var(--body); font-size: .66rem; letter-spacing: .24em; text-transform: uppercase; color: var(--oak); }
@@ -90,9 +89,12 @@ em { font-style: italic; }
 .item .dots { flex: 1; border-bottom: 1px dotted #A9A39A; transform: translateY(-4px); min-width: 20px; }
 .item .price { flex: none; font-family: var(--display); font-size: 1.25rem; font-weight: 500; font-variant-numeric: tabular-nums; }
 .item .price.ask { font-family: var(--body); font-size: .68rem; font-weight: 400; letter-spacing: .18em; text-transform: uppercase; color: var(--mute); }
-.items { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px; }
-.items li { padding-block: 6px; border-bottom: 1px dotted #C4BEB5; }
-@media (max-width: 480px) { .items { grid-template-columns: 1fr; } }
+.items { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.items li { display: flex; align-items: baseline; gap: 10px; padding-block: 7px; }
+.items .name { flex: 0 1 auto; min-width: 0; }
+.items .dots { flex: 1; border-bottom: 1px dotted #A9A39A; transform: translateY(-4px); min-width: 16px; }
+.items .price { flex: none; font-family: var(--display); font-size: 1.2rem; font-weight: 500; font-variant-numeric: tabular-nums; }
+.price-note { margin: 28px 0 0; font-size: .85rem; color: var(--mute); }
 .course .note { margin: 6px 0 0; font-size: .92rem; color: var(--mute); }
 .carte .foot { margin-top: 44px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
 .km { font-size: .7rem; letter-spacing: .26em; text-transform: uppercase; color: var(--mute); }
@@ -221,22 +223,23 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; gap: 10px 3
         <p class="eyebrow">The Menu</p>
         <h2>Services, <em>à la carte</em></h2>
       </div>
-      <p>Precision cuts, fades, color and beard work, with premium professional products. Every service starts with a consultation.</p>
+      <p>Scissor cuts, fades, hot towel shaves and gray blending, with Kevin Murphy products. Every service starts with a consultation.</p>
     </header>
     <div class="menu">
       <div class="course">
         <h3>The Cut <small>Haircuts</small></h3>
-        <ul class="items"><li>Men's haircut</li><li>Tailored scissor cuts</li><li>Women's haircut</li><li>Short, medium &amp; long cuts</li><li>Skin fades</li><li>Taper fades</li><li>Clipper fades</li><li>Kids' haircuts</li></ul>
+        <ul class="items"><li><span class="name">Short haircut</span><span class="dots"></span><span class="price">$38</span></li><li><span class="name">Skin fade</span><span class="dots"></span><span class="price">$46</span></li><li><span class="name">Medium length dry cut</span><span class="dots"></span><span class="price">$43</span></li><li><span class="name">Long dry cut</span><span class="dots"></span><span class="price">$52</span></li><li><span class="name">Undercut</span><span class="dots"></span><span class="price">$22</span></li><li><span class="name">Neckline cleanup</span><span class="dots"></span><span class="price">$22</span></li><li><span class="name">Fringe / face framing only</span><span class="dots"></span><span class="price">$22</span></li><li><span class="name">Child's haircut, 10 &amp; under</span><span class="dots"></span><span class="price">$38</span></li></ul>
       </div>
       <div class="course">
         <h3>The Chair <small>Barbering</small></h3>
-        <ul class="items"><li>Beard trim</li><li>Hot towel shave</li><li>Shape-ups &amp; line-ups</li><li>Beard sculpting</li><li>Haircut &amp; beard combo</li></ul>
+        <ul class="items"><li><span class="name">Traditional hot towel shave</span><span class="dots"></span><span class="price">$53</span></li><li><span class="name">Hot towel head shave</span><span class="dots"></span><span class="price">$53</span></li><li><span class="name">Hot towel premium goatee / beard sculpting</span><span class="dots"></span><span class="price">$36</span></li><li><span class="name">Express goatee / beard sculpting</span><span class="dots"></span><span class="price">$22</span></li><li><span class="name">Design work</span><span class="dots"></span><span class="price">$10</span></li></ul>
       </div>
       <div class="course">
-        <h3>The Color <small>Grey blending &amp; gloss</small></h3>
-        <ul class="items"><li>Grey blending</li><li>Toner &amp; gloss refresh</li></ul>
+        <h3>The Color <small>Gray blending &amp; gloss</small></h3>
+        <ul class="items"><li><span class="name">Men's gray blending</span><span class="dots"></span><span class="price">$48</span></li><li><span class="name">Gloss / tone refresh</span><span class="dots"></span><span class="price">$48</span></li></ul>
       </div>
     </div>
+    <p class="price-note">Prices shown are starting prices. Final price depends on your stylist's level and your hair.</p>
     <div class="foot">
       <span class="km">Proud Kevin Murphy salon</span>
       <a class="btn" href="https://phorest.com/book/salons/salonpolobarbershop" target="_blank" rel="noopener">Book a service</a>
