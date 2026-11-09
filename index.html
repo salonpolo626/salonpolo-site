@@ -36,7 +36,8 @@ em { font-style: italic; }
 /* Nav */
 .nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--wall) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
 .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
-.brand { font-family: var(--display); font-size: 1.3rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; }
+.brand { display: block; line-height: 0; }
+.brand img { height: 32px; width: auto; }
 .links { display: flex; gap: 30px; align-items: center; font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; }
 .links a { text-decoration: none; color: var(--mute); transition: color .2s; }
 .links a:hover { color: var(--ink); }
@@ -49,8 +50,8 @@ em { font-style: italic; }
 /* Cover */
 .issue { display: flex; justify-content: space-between; gap: 12px; padding-block: 18px 14px; font-size: 0.68rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--mute); border-bottom: 1px solid var(--ink); }
 @media (max-width: 560px) { .issue span:nth-child(2) { display: none; } }
-.masthead { font-size: clamp(4rem, 18vw, 16rem); line-height: .8; letter-spacing: -0.035em; font-weight: 500; padding-block: 0.06em 0.1em; white-space: nowrap; animation: rise 1s cubic-bezier(.2,.7,.2,1) both; }
-.masthead em { font-weight: 400; }
+.masthead { padding-block: clamp(24px, 4vw, 52px); animation: rise 1s cubic-bezier(.2,.7,.2,1) both; }
+.masthead img { display: block; width: 100%; height: auto; }
 @keyframes rise { from { opacity: .001; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 .photo { display: block; width: 100%; height: clamp(320px, 56vw, 760px); object-fit: cover; object-position: 55% 45%; }
 .caption { display: grid; grid-template-columns: 1fr; gap: 20px; padding-block: 22px 0; }
@@ -128,7 +129,9 @@ em { font-style: italic; }
 footer { border-top: 1px solid var(--ink); padding-block: 26px; color: var(--mute); font-size: .8rem; }
 footer .social { display: flex; gap: 20px; flex-wrap: wrap; }
 footer .social a { text-decoration: none; color: var(--ink); }
-footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 32px; justify-content: space-between; }
+footer .fbrand { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+footer .fbrand img { height: 44px; width: auto; }
+footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; gap: 10px 32px; justify-content: space-between; }
 </style>
 </head>
 <body>
@@ -136,7 +139,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 32px; justify-content: 
 
 <nav class="nav" aria-label="Main">
   <div class="wrap">
-    <a class="brand" href="#top">Salon Polo</a>
+    <a class="brand" href="#top"><img src="logo-wordmark.png" alt="Salon Polo" width="124" height="32"></a>
     <div class="links">
       <a href="#services">Services</a>
       <a href="#salon">The Salon</a>
@@ -148,8 +151,8 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 32px; justify-content: 
 
 <header id="top">
   <div class="wrap">
-    <div class="issue"><span>Annapolis, Maryland</span><span>Salon &amp; Barbershop</span><span>Est. 2020</span></div>
-    <h1 class="masthead">Salon <em>Polo</em></h1>
+    <div class="issue"><span>Annapolis, Maryland</span><span>Salon &amp; Barbershop</span><span>A Kevin Murphy salon</span></div>
+    <h1 class="masthead"><img src="logo-wordmark.png" alt="Salon Polo, established 2020" width="2575" height="667"></h1>
   </div>
   <img class="photo" src="salon-floor.jpg" alt="Inside Salon Polo: black styling stations, a gloss-black front desk, Kevin Murphy shelves and the Salon Polo sign, est. 2020">
   <div class="wrap caption">
@@ -264,7 +267,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 32px; justify-content: 
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Salon Polo &amp; Barbershop · Annapolis, Maryland</span>
+    <span class="fbrand"><img src="logo-badge.png" alt="Salon Polo, est. 2020" width="140" height="49"><span>© 2026 Salon Polo &amp; Barbershop · Annapolis, Maryland</span></span>
     <span class="social"><a href="https://www.instagram.com/salonpolo/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/thesalonpolo/" target="_blank" rel="noopener">Facebook</a><span>contact@salonpolo.com</span></span>
   </div>
 </footer>
