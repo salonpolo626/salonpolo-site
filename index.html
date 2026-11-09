@@ -126,7 +126,9 @@ em { font-style: italic; }
 .rv-sum { display: inline-flex; align-items: baseline; gap: 12px; text-decoration: none; color: var(--wall); }
 .rv-sum b { font-family: var(--display); font-weight: 500; font-size: 2.2rem; line-height: 1; font-variant-numeric: tabular-nums; }
 .rv-sum span:last-child { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: #B9AC9C; border-bottom: 1px solid #5A534B; padding-bottom: 2px; }
-.rv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0 40px; margin-top: 56px; }
+.rv-grid { display: grid; grid-template-columns: 1fr; gap: 0 40px; margin-top: 56px; }
+@media (min-width: 640px) { .rv-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .rv-grid { grid-template-columns: repeat(4, 1fr); gap: 0 32px; } }
 .rv-card { border-top: 1px solid #3A3631; padding-block: 22px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
 .rv-card p { margin: 0; font-family: var(--display); font-size: 1.25rem; line-height: 1.35; color: #E9E3DA; display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
 .rv-who { display: flex; align-items: center; gap: 10px; font-size: .85rem; color: #B9AC9C; }
