@@ -128,8 +128,7 @@ em { font-style: italic; }
 .rv-sum span:last-child { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: #B9AC9C; border-bottom: 1px solid #5A534B; padding-bottom: 2px; }
 .rv-grid { display: grid; grid-template-columns: 1fr; gap: 0 40px; margin-top: 56px; }
 @media (min-width: 640px) { .rv-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 640px) and (max-width: 1099px) { .rv-grid .rv-card:last-child:nth-child(odd) { grid-column: 1 / -1; } }
-@media (min-width: 1100px) { .rv-grid { grid-template-columns: repeat(var(--n, 4), 1fr); gap: 0 32px; } }
+
 .rv-card { border-top: 1px solid #3A3631; padding-block: 22px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
 .rv-card p { margin: 0; font-family: var(--display); font-size: 1.25rem; line-height: 1.35; color: #E9E3DA; display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
 .rv-who { display: flex; align-items: center; gap: 10px; font-size: .85rem; color: #B9AC9C; }
@@ -293,12 +292,22 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; gap: 10px 3
         <b id="rv-rating">5.0</b><span class="stars" id="rv-stars" aria-hidden="true">★★★★★</span><span id="rv-count">202 Google reviews</span>
       </a>
     </div>
-    <blockquote id="rv-lead" hidden></blockquote>
-    <div class="meta" id="rv-lead-meta" hidden></div>
-    <div class="rv-grid" id="rv-grid" hidden></div>
+    <blockquote id="rv-lead">“Alexis cut my husband’s hair and did an awesome job! They also carry Kevin Murphy products, which not everyone does and it’s great to have a place nearby to get these. The salon is clean and organized. Highly recommend.”</blockquote>
+    <div class="meta"><span class="stars" aria-label="5 out of 5 stars">★★★★★</span><span>Lauran P., Google review</span></div>
+    <div class="rv-grid">
+      <article class="rv-card">
+        <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+        <p>Amber did an amazing job! She is great at knowing what’s would look best for me and suggesting how to style it.</p>
+        <div class="rv-who"><span>Peter S.</span><span>· Google review</span></div>
+      </article>
+      <article class="rv-card">
+        <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+        <p>Colette is very professional and keeps attention to detail definitely recommend!</p>
+        <div class="rv-who"><span>Scott</span><span>· Google review</span></div>
+      </article>
+    </div>
     <div class="rv-foot">
       <a href="https://www.google.com/maps/search/?api=1&amp;query=Salon+Polo+%26+Barbershop+Annapolis+MD" id="rv-all" target="_blank" rel="noopener">Read all reviews on Google</a>
-      <span class="rv-powered" id="rv-powered" hidden>Reviews powered by Google</span>
     </div>
   </div>
 </section>
@@ -349,18 +358,13 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; gap: 10px 3
 </footer>
 
 <script>
-/* Live Google reviews.
-   Paste the restricted browser key and the salon's Place ID below.
-   Until both are filled in, the section shows the saved rating, count and quote. */
+/* Live Google rating and review count. The reviews themselves are chosen by the salon. */
 const GOOGLE_REVIEWS = { key: "AIzaSyDi8_w6A9v8WE134_ZMd9xmP0J1b-6R2IQ", placeId: "ChIJ20pzclP3t4kRW6qnVT1pZXM" };
 
 (function () {
   const cfg = GOOGLE_REVIEWS;
   const section = document.getElementById("reviews");
   if (!cfg.key || !cfg.placeId || !section) return;
-
-  const starText = n => "★★★★★".slice(0, Math.round(n)) + "☆☆☆☆☆".slice(0, 5 - Math.round(n));
-  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
 
   function loadMaps() {
     (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({ key: cfg.key, v: "weekly" });
@@ -371,56 +375,15 @@ const GOOGLE_REVIEWS = { key: "AIzaSyDi8_w6A9v8WE134_ZMd9xmP0J1b-6R2IQ", placeId
       loadMaps();
       const { Place } = await google.maps.importLibrary("places");
       const place = new Place({ id: cfg.placeId });
-      await place.fetchFields({ fields: ["rating", "userRatingCount", "reviews", "googleMapsURI"] });
-
-      if (place.rating) {
-        document.getElementById("rv-rating").textContent = place.rating.toFixed(1);
-        document.getElementById("rv-stars").textContent = starText(place.rating);
-      }
+      await place.fetchFields({ fields: ["rating", "userRatingCount", "googleMapsURI"] });
+      if (place.rating) document.getElementById("rv-rating").textContent = place.rating.toFixed(1);
       if (place.userRatingCount) document.getElementById("rv-count").textContent = place.userRatingCount.toLocaleString() + " Google reviews";
       if (place.googleMapsURI) {
         document.getElementById("rv-link").href = place.googleMapsURI;
         document.getElementById("rv-all").href = place.googleMapsURI;
       }
-
-      // Skip reviews about children; the site focuses on adult cuts.
-      const KIDS = /\b(kids?|child|children|son|sons|daughters?|toddlers?|baby|babies|little (one|boy|girl)s?|boys?|girls?|grandsons?|granddaughters?|teens?|teenagers?)\b/i;
-      // Keep the spotlight on the team: skip reviews that name the owner.
-      const OWNER = /\bhenry\b/i;
-      const reviews = (place.reviews || []).filter(r => r.text && r.rating >= 4 && !KIDS.test(r.text) && !OWNER.test(r.text));
-      if (!reviews.length) return;
-
-      // Lead quote: the shortest five-star review reads best large.
-      const lead = reviews.filter(r => r.rating === 5).sort((a, b) => a.text.length - b.text.length)[0] || reviews[0];
-      if (lead.text.length <= 220) {
-        const leadEl = document.getElementById("rv-lead");
-        leadEl.textContent = "\u201C" + lead.text.trim() + "\u201D";
-        leadEl.hidden = false;
-        const meta = document.getElementById("rv-lead-meta");
-        meta.hidden = false;
-        meta.replaceChildren(el("span", "stars", starText(lead.rating)), el("span", null, (lead.authorAttribution?.displayName || "Google reviewer") + ", " + (lead.relativePublishTimeDescription || "Google review")));
-      }
-
-      const grid = document.getElementById("rv-grid");
-      grid.replaceChildren();
-      let cards = reviews.filter(r => r !== lead || lead.text.length > 220).slice(0, 4);
-      grid.style.setProperty("--n", cards.length);
-      cards.forEach(r => {
-        const card = el("article", "rv-card");
-        card.append(el("span", "stars", starText(r.rating)));
-        card.append(el("p", null, r.text.trim()));
-        const who = el("div", "rv-who");
-        const a = r.authorAttribution || {};
-        if (a.photoURI) { const img = el("img"); img.src = a.photoURI; img.alt = ""; img.referrerPolicy = "no-referrer"; who.append(img); }
-        const name = a.uri ? Object.assign(el("a", null, a.displayName || "Google reviewer"), { href: a.uri, target: "_blank", rel: "noopener" }) : el("span", null, a.displayName || "Google reviewer");
-        who.append(name, el("span", null, "· " + (r.relativePublishTimeDescription || "")));
-        card.append(who);
-        grid.append(card);
-      });
-      grid.hidden = grid.children.length === 0;
-      document.getElementById("rv-powered").hidden = false;
     } catch (err) {
-      console.warn("Google reviews could not load; showing saved reviews.", err);
+      console.warn("Google rating could not load; showing the saved count.", err);
     }
   }
 
