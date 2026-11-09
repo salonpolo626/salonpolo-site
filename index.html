@@ -110,7 +110,8 @@ em { font-style: italic; }
 .shots { grid-auto-rows: 1fr; }
 .shots figure.wide, .shots figure.big { aspect-ratio: auto; position: relative; grid-column: span 2; }
 .shots figure.big { grid-row: span 2; }
-.shots figure.wide img, .shots figure.big img { position: absolute; inset: 0; }
+.shots figure.tall { grid-row: span 2; aspect-ratio: auto; position: relative; }
+.shots figure.wide img, .shots figure.big img, .shots figure.tall img { position: absolute; inset: 0; }
 @media (min-width: 900px) { .shots { grid-template-columns: repeat(4, 1fr); } }
 .shots figure { margin: 0; overflow: hidden; aspect-ratio: 1 / 1; background: var(--panel); min-width: 0; }
 .shots img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
@@ -292,6 +293,9 @@ footer .wrap { align-items: center;  display: flex; flex-wrap: wrap; gap: 10px 3
       <figure><img src="work/waves.jpg" alt="Men's medium-length cut with natural waves swept back" width="1100" height="1100" loading="lazy"></figure>
       <figure><img src="work/mullet.jpg" alt="Profile of a textured modern mullet with a taper fade" width="1100" height="1100" loading="lazy"></figure>
       <figure><img src="work/pixie.jpg" alt="Short silver pixie cut with soft texture on top" width="1100" height="1100" loading="lazy"></figure>
+      <figure class="tall"><img src="work/wavy.jpg" style="object-position: 0% 50%" alt="Men's textured cut with natural waves and a soft, longer back" width="700" height="1345" loading="lazy"></figure>
+      <figure><img src="work/fringe.jpg" alt="Shaggy textured cut with a heavy fringe" width="1100" height="1100" loading="lazy"></figure>
+      <figure><img src="work/slick.jpg" alt="Slicked-back men's cut with a tapered side and full beard" width="1100" height="1100" loading="lazy"></figure>
       <figure><img src="work/crop.jpg" alt="Short textured crop with choppy layers and a soft fringe" width="1100" height="1100" loading="lazy"></figure>
       <figure><img src="work/amber.jpg" alt="Stylist Amber smiling as she finishes a client's slicked-back cut" width="1100" height="1100" loading="lazy"></figure>
       <figure class="big"><img src="work/stylist.jpg" alt="Stylist shaping a client's textured cut with shears" width="1400" height="1400" loading="lazy"></figure>
