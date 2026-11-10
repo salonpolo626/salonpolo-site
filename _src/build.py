@@ -21,7 +21,7 @@ import os
 # Settings
 # --------------------------------------------------------------------------
 SITE_URL = "https://www.salonpolo.com"     # the real domain (used for canonical URLs)
-BASE_PATH = "/salonpolo-site/"             # where the site is served right now ("/" after the domain switch)
+BASE_PATH = "/"             # where the site is served right now ("/" after the domain switch)
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TODAY = datetime.date.today().isoformat()
 
