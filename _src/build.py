@@ -184,9 +184,9 @@ TEAM = [
         "does": "Short to long cuts · Fades &amp; tapers · Beard work · Gray blending",
         "services": ["mens-haircuts", "skin-fades", "beard-trims", "gray-blending"],
         "title": "Alexis, Stylist at Salon Polo in Annapolis, MD",
-        "description": "Book with Alexis at Salon Polo in Annapolis, MD. Licensed cosmetologist for 7+ years specializing in clipper and scissor cuts, skin fades and beard work.",
+        "description": "Book with Alexis at Salon Polo in Annapolis, MD. Cutting hair for almost 10 years, specializing in clipper and scissor cuts, skin fades and beard work.",
         "h1": "Alexis",
-        "lead": "Licensed cosmetologist for over seven years, specializing in clipper and scissor cuts.",
+        "lead": "Cutting hair for almost 10 years, and a licensed cosmetologist for over seven. Specializes in clipper and scissor cuts.",
         "bio": [
             "Hi, I’m Alexis! I’ve been a licensed cosmetologist for over seven years, specializing in clipper and scissor cuts. I love building new connections and helping people feel confident in the reflection they see in the mirror.",
             "When I’m not behind the chair, you’ll find me crocheting, going to the gym, spending time outdoors. I am fascinated by marine wildlife and ocean conservation. I can’t wait to welcome you to my chair and help you achieve a look you’ll love.",
@@ -211,9 +211,9 @@ TEAM = [
         "does": "Short to long cuts · Fades &amp; tapers · Beard work · Gray blending",
         "services": ["mens-haircuts", "skin-fades", "beard-trims", "gray-blending"],
         "title": "Amber, Stylist at Salon Polo in Annapolis, MD",
-        "description": "Book with Amber at Salon Polo in Annapolis, MD. Licensed cosmetologist for 7 years specializing in men's grooming: cuts, fades, beards and gray blending.",
+        "description": "Book with Amber at Salon Polo in Annapolis, MD. Cutting hair for almost 10 years, specializing in men's grooming: cuts, fades, beards and gray blending.",
         "h1": "Amber",
-        "lead": "Licensed cosmetologist for 7 years, specializing in men's grooming.",
+        "lead": "Cutting hair for almost 10 years, and a licensed cosmetologist for seven. Specializes in men's grooming.",
         "bio": [
             "Hi, I'm Amber! I've been a licensed cosmetologist for 7 years and specialize in men's grooming while also offering women's haircuts and blowouts. My goal is to help every guest leave my chair looking great and feeling confident.",
             "When I'm not behind the chair, you'll usually find me spending time with my fur babies, exploring the outdoors, or enjoying a festival. I look forward to meeting you and helping you achieve a look that makes you feel your best!",
