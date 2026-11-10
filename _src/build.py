@@ -73,9 +73,9 @@ SERVICES = [
         "h1": "Men's haircuts <em>in Annapolis.</em>",
         "lead": "Short, medium and long cuts, tailored to your head shape and the way your hair grows.",
         "body": [
-            "Every men's haircut at Salon Polo starts with a conversation: how you wear your hair, how much time you spend styling it, and how you want it to grow out. From there your stylist builds the shape with clippers, scissors or both, cut to your head shape and growth pattern rather than a one-size template.",
+            "Every men's haircut at Salon Polo starts with a conversation: how you wear your hair, how much time you spend styling it, and how you want it to grow out. From there we build the shape with clippers, scissors or both, cut to your head shape and growth pattern rather than a one-size template.",
             "We cut every length. Short, clean cuts. Medium-length cuts with texture and movement. Longer styles, cut dry so we can see exactly how your hair falls. We also do undercuts, and quick neckline cleanups to keep a cut sharp between visits.",
-            "Every cut is finished with Kevin Murphy products, and your stylist will show you how to recreate the look at home with what you actually need.",
+            "Every cut is finished with Kevin Murphy products, and we'll show you how to recreate the look at home with what you actually need.",
         ],
         "menu": ["Short haircut", "Medium length dry cut", "Long dry cut", "Undercut", "Neckline cleanup", "Fringe / face framing only"],
         "who": ["alexis", "amber", "colette"],
@@ -93,7 +93,7 @@ SERVICES = [
         "body": [
             "A good fade is all in the blend. Whether you want a skin fade that takes the sides all the way down or a softer taper at the temples and neckline, we blend it clean, then shape the top so the whole cut works together.",
             "Fades are a favorite here. Colette, our licensed barber, says tapers and skin fades are her favorite cuts to do, and Alexis's favorite cut is a skin fade: in her words, it's soooo satisfying.",
-            "Tell your stylist how high you like it, how short you want the top, and how often you come in, and they'll set the fade up so it still looks right a few weeks later.",
+            "Tell us how high you like it, how short you want the top, and how often you come in, and we'll set the fade up so it still looks right a few weeks later.",
         ],
         "menu": ["Skin fade", "Taper fade", "Neckline cleanup"],
         "who": ["colette", "alexis", "amber"],
@@ -215,7 +215,7 @@ TEAM = [
         "h1": "Amber",
         "lead": "Licensed cosmetologist for 7 years, specializing in men's grooming.",
         "bio": [
-            "Hi, I'm Amber! I've been a licensed cosmetologist for 7 years and specialize in men's grooming. My goal is to help every guest leave my chair looking great and feeling confident.",
+            "Hi, I'm Amber! I've been a licensed cosmetologist for 7 years and specialize in men's grooming while also offering women's haircuts and blowouts. My goal is to help every guest leave my chair looking great and feeling confident.",
             "When I'm not behind the chair, you'll usually find me spending time with my fur babies, exploring the outdoors, or enjoying a festival. I look forward to meeting you and helping you achieve a look that makes you feel your best!",
         ],
         "qa": [],
@@ -240,7 +240,7 @@ TEAM = [
         "bio": [
             "Hi, I’m Colette! I'm a licensed barber and I’ve been cutting hair since I was 17. My favorite cuts to do are tapers and skin fades, but I enjoy working with all hair types and styles.",
             "Outside of the shop, I love spending time with my family, especially my twin brother and my dog. I also enjoy walking shelter dogs at the SPCA.",
-            "At Salon Polo, I want every client to be comfortable and leave feeling their absolute best, while maintaining a fun and lighthearted experience. I’m excited to meet you and have you in my chair!",
+            "At Salon Polo, I want every client to be comfortable and leave feeling their absolute best, while maintaining a fun and lighthearted experience. I also love cutting kids’ hair, and I even have a treasure box filled with toys for them to pick from after doing such a great job! I’m excited to meet you and have you in my chair!",
         ],
         "qa": [],
         "review": ("Colette is very professional and keeps attention to detail definitely recommend!", "Scott, Google review"),
@@ -525,6 +525,16 @@ def rel(path):
 # --------------------------------------------------------------------------
 # Shared fragments
 # --------------------------------------------------------------------------
+def who_count(slugs):
+    roles = [TM[s]["role"] for s in slugs]
+    parts = []
+    for role in ("Stylist", "Barber"):
+        n = roles.count(role)
+        if n:
+            parts.append(f"{n} {role.lower()}{'s' if n > 1 else ''}")
+    return " · ".join(parts)
+
+
 def chair_card(R, t, heading="h3", show_profile=True):
     tag = '<span class="tag">Accepting new guests</span>' if t.get("accepting") else ""
     prof = f'<a class="soft" href="{R}team/{t["slug"]}/">Meet {t["name"]}</a>' if show_profile else ""
@@ -645,7 +655,7 @@ def build_home():
         <p class="eyebrow">The Team</p>
         <h2>Behind <em>the chair</em></h2>
       </div>
-      <p>Every cut, color and shave at Salon Polo comes from one of these chairs. Pick your stylist when you book.</p>
+      <p>Every cut, color and shave at Salon Polo comes from one of these chairs. Choose your stylist or barber when you book.</p>
     </header>
     <div class="chairs">
 {chairs}
@@ -732,7 +742,7 @@ def build_services():
     path = "services/"
     R = rel(path)
     cards = "\n".join(
-        f'''      <a class="svc" href="{R}services/{s["slug"]}/"><h3>{s["name"]} <span>{len(s["who"])} stylist{"s" if len(s["who"]) > 1 else ""}</span></h3><p>{s["short"]} Booked with {", ".join(TM[w]["name"] for w in s["who"])}.</p></a>'''
+        f'''      <a class="svc" href="{R}services/{s["slug"]}/"><h3>{s["name"]} <span>{who_count(s["who"])}</span></h3><p>{s["short"]} Booked with {", ".join(TM[w]["name"] for w in s["who"])}.</p></a>'''
         for s in SERVICES)
     menu = []
     for title, small, items, links in MENU:
@@ -769,7 +779,7 @@ def build_services():
         <p class="eyebrow">The Menu</p>
         <h2>The full <em>menu.</em></h2>
       </div>
-      <p>Prices depend on your stylist and the service, and are shown when you book online.</p>
+      <p>Prices depend on who you book with and the service, and are shown when you book online.</p>
     </header>
     <div class="menu">
 {chr(10).join(menu)}
@@ -848,7 +858,7 @@ def build_service(s):
 <section class="sec">
   <div class="wrap">
     <p class="eyebrow">Who to book</p>
-    <h2>Book {"with" if len(s["who"]) == 1 else "your"} <em>{TM[s["who"][0]]["name"] if len(s["who"]) == 1 else "stylist."}</em></h2>
+    <h2>{"Book with" if len(s["who"]) == 1 else "Pick your"} <em>{TM[s["who"][0]]["name"] if len(s["who"]) == 1 else "chair."}</em></h2>
     <div class="{who_cls}" style="margin-top:40px">
 {chr(10).join(who_cards)}
     </div>
@@ -909,10 +919,10 @@ def build_team():
   </div>
 </section>
 
-{bookband(R, heading="Pick your <em>stylist.</em>", text="Choose Alexis, Amber or Colette when you book online, or call and we'll match you.")}'''
+{bookband(R, heading="Pick your <em>chair.</em>", text="Choose Alexis, Amber or Colette when you book online, or call and we'll match you.")}'''
     return write_page(path, R=R, current="team/",
                       title="Our Team: Stylists & Barber | Salon Polo, Annapolis MD",
-                      description="Meet the team at Salon Polo in Annapolis, MD: stylists Alexis and Amber and barber Colette, all accepting new guests. Book online with your stylist.",
+                      description="Meet the team at Salon Polo in Annapolis, MD: stylists Alexis and Amber and barber Colette, all accepting new guests. Book online with Alexis, Amber or Colette.",
                       body=body, ld_nodes=[salon_ld()] + [person_ld(t) for t in TEAM] + [crumbs_ld(crumbs)],
                       image="team/alexis.jpg", image_alt="The Salon Polo team")
 
@@ -983,7 +993,7 @@ def build_person(t):
 
 
 FAQ = [
-    ("How do I book an appointment?", f"Book online through our booking page, where you can choose your stylist and see available times, or call us at {PHONE_DISPLAY}."),
+    ("How do I book an appointment?", f"Book online through our booking page, where you can choose your stylist or barber and see available times, or call us at {PHONE_DISPLAY}."),
     ("What is your cancellation policy?", f"Please cancel or reschedule at least 24 hours before your appointment, using the link in your confirmation email and text or by calling {PHONE_DISPLAY}. After two no-call, no-shows, you will no longer be able to book future appointments."),
     ("What are your hours?", "Tuesday to Friday, 10 AM to 7 PM, and Saturday, 9 AM to 2 PM. We're closed Sunday and Monday."),
     ("Where are you located?", f"Salon Polo & Barbershop is at {STREET}, {CITY}, {REGION} {ZIP}."),
