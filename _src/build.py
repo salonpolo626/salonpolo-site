@@ -197,7 +197,7 @@ TEAM = [
             ("Something people might not know about you?", "“I used to drive dump trucks.”"),
         ],
         "review": ("Alexis cut my husband’s hair and did an awesome job! They also carry Kevin Murphy products, which not everyone does and it’s great to have a place nearby to get these. The salon is clean and organized. Highly recommend.", "Lauran P., Google review"),
-        "work": None,
+        "work": ("work/stylist.jpg", "Alexis shaping a guest's textured cut with shears", 1400, 1400),
     },
     {
         "slug": "amber",
@@ -269,7 +269,7 @@ WORK = [  # (file, alt, w, h, css class, inline style)
     ("slick", "Slicked-back men's cut with a tapered side and full beard", 1100, 1100, "", ""),
     ("crop", "Short textured crop with choppy layers and a soft fringe", 1100, 1100, "", ""),
     ("amber", "Stylist Amber smiling as she finishes a guest's slicked-back cut", 1100, 1100, "", ""),
-    ("stylist", "Stylist shaping a guest's textured cut with shears", 1400, 1400, "big", ""),
+    ("stylist", "Alexis shaping a guest's textured cut with shears", 1400, 1400, "big", ""),
     ("colette", "Barber Colette finishing a short fade on a smiling guest", 1600, 800, "wide", ""),
 ]
 WK = {w[0]: w for w in WORK}
