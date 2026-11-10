@@ -98,7 +98,7 @@ SERVICES = [
         "menu": ["Medium length dry cut", "Long dry cut"],
         "who": ["alexis", "amber", "colette"],
         "who_note": {"amber": "Cuts every length", "alexis": "Cuts every length", "colette": "Flows &amp; medium-length cuts"},
-        "photos": ["scissor", "wavy", "waves"],
+        "photos": ["flow", "scissor", "wavy"],
     },
     {
         "slug": "skin-fades",
@@ -321,6 +321,7 @@ WORK = [  # (file, alt, w, h, css class, inline style)
     ("colette", "Barber Colette finishing a short fade on a smiling guest", 1600, 800, "wide", ""),
 ]
 WK = {w[0]: w for w in WORK}
+WK["flow"] = ("flow", "Men's flow haircut with soft layers and natural wave, shaped with shears", 1100, 1100, "", "")  # flow page only, not in home gallery
 
 # --------------------------------------------------------------------------
 # Structured data helpers
