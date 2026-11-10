@@ -115,7 +115,7 @@ SERVICES = [
         ],
         "menu": ["Traditional hot towel shave", "Hot towel head shave"],
         "who": ["colette"],
-        "who_note": {},
+        "who_note": {"colette": "One of her favorites"},
         "photos": ["shave"],
     },
     {
@@ -133,7 +133,7 @@ SERVICES = [
         ],
         "menu": ["Hot towel premium goatee / beard sculpting", "Express goatee / beard sculpting"],
         "who": ["alexis", "amber", "colette"],
-        "who_note": {},
+        "who_note": {"colette": "One of her favorites"},
         "photos": ["beard", "slick"],
     },
     {
@@ -260,14 +260,14 @@ TEAM = [
         "title": "Colette, Barber at Salon Polo in Annapolis, MD",
         "description": "Book with Colette, licensed barber at Salon Polo in Annapolis, MD. Tapers, skin fades, short and medium cuts, hot towel shaves and beard work.",
         "h1": "Colette",
-        "lead": "Licensed barber, cutting hair since she was 17. Tapers and skin fades are her favorites.",
+        "lead": "Licensed barber, cutting hair since she was 17. Her favorites: tapers, skin fades, beard work and shaves.",
         "bio": [
             "Hi, I’m Colette! I'm a licensed barber and I’ve been cutting hair since I was 17. My favorite cuts to do are tapers and skin fades, but I enjoy working with all hair types and styles.",
             "Outside of the shop, I love spending time with my family, especially my twin brother and my dog. I also enjoy walking shelter dogs at the SPCA.",
             "At Salon Polo, I want every client to be comfortable and leave feeling their absolute best, while maintaining a fun and lighthearted experience. I also love cutting kids’ hair, and I even have a treasure box filled with toys for them to pick from after doing such a great job! I’m excited to meet you and have you in my chair!",
         ],
         "qa": [
-            ("Favorite cuts to do", "Tapers and skin fades."),
+            ("Her favorites", "Tapers, skin fades, beard work and shaves."),
             ("Cutting hair since", "She was 17."),
             ("Off the clock", "Time with her family, especially her twin brother, her dog, and walking shelter dogs at the SPCA."),
         ],
