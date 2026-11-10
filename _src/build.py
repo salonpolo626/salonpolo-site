@@ -87,17 +87,17 @@ SERVICES = [
         "name": "Flow & Layered Cuts",
         "short": "Longer men's cuts with layers, texture and movement.",
         "title": "Men's Flow Haircuts & Layered Cuts in Annapolis, MD | Salon Polo",
-        "description": "Men's flow haircuts and layered, texturized scissor cuts in Annapolis, MD. Not a traditional barbershop: stylists who cut with shears. Book with Amber or Alexis.",
+        "description": "Men's flow haircuts and layered, texturized scissor cuts in Annapolis, MD. Not a traditional barbershop: stylists and a barber who cut with shears. Book online.",
         "h1": "Flow haircuts &amp; layers <em>in Annapolis.</em>",
         "lead": "For men who want more than a clipper cut: shear work, layers and texture that let your hair move.",
         "body": [
             "A lot of the men who find us aren't looking for a traditional barbershop. They want a stylist or barber who really knows how to use shears, and a cut with length, layers and movement: the flow.",
             "A good flow is built with scissors, not clippers. We cut layers so the length sits right, texturize to take out bulk, and shape it around the way your hair grows, so it falls into place on its own and grows out well between visits.",
-            "Flows and longer layered cuts are done by Amber and Alexis. Colette cuts medium-length styles, so she's a good fit if you're keeping it a little shorter.",
+            "Amber, Alexis and Colette all cut flows. For long layered cuts, book Amber or Alexis.",
         ],
         "menu": ["Medium length dry cut", "Long dry cut"],
         "who": ["amber", "alexis", "colette"],
-        "who_note": {"amber": "Cuts every length", "colette": "Medium length only"},
+        "who_note": {"amber": "Cuts every length", "alexis": "Cuts every length", "colette": "Flows &amp; medium-length cuts"},
         "photos": ["scissor", "wavy", "waves"],
     },
     {
@@ -176,7 +176,6 @@ SERVICES = [
     },
     {
         "slug": "womens-haircuts",
-        "unlisted": True,   # linked from Amber's and Alexis's pages only, not promoted in menus
         "name": "Women's Haircuts",
         "short": "Short, medium and long cuts for women.",
         "title": "Women's Haircuts in Annapolis, MD | Salon Polo",
@@ -188,7 +187,7 @@ SERVICES = [
             "From short cuts and pixies to textured and longer styles, we cut to your hair's natural movement, then finish with Kevin Murphy products and show you how to recreate the look at home.",
             "Amber and Alexis cut every length. Colette cuts short and medium-length hair. For a wash, cut and blow-dry, book with Alexis: she's the only one on the team who offers it.",
         ],
-        "menu": ["Short haircut", "Medium length dry cut", "Long dry cut", "Fringe / face framing only", "Wash, cut &amp; blow-dry"],
+        "menu": ["Women's short haircut", "Women's medium length haircut", "Women's long haircut", "Fringe / face framing only", "Wash, cut &amp; blow-dry"],
         "who": ["alexis", "amber", "colette"],
         "who_note": {"alexis": "The only one who does wash, cut &amp; blow-dry", "amber": "Cuts every length", "colette": "Short &amp; medium cuts"},
         "photos": ["pixie", "crop"],
@@ -205,6 +204,8 @@ MENU = [
     ("The Groom", "Barbering", ["Traditional hot towel shave", "Hot towel head shave",
                                 "Hot towel premium goatee / beard sculpting", "Express goatee / beard sculpting"],
      ["hot-towel-shaves", "beard-trims"]),
+    ("Her Cut", "Women's haircuts", ["Women's short haircut", "Women's medium length haircut", "Women's long haircut",
+                                     "Wash, cut &amp; blow-dry"], ["womens-haircuts"]),
 ]
 
 # --------------------------------------------------------------------------
@@ -274,7 +275,7 @@ TEAM = [
         "alt": "Colette, barber at Salon Polo, in front of the Kevin Murphy wall",
         "book": "https://www.phorest.com/salon/salonpolobarbershop/book/services?staffId=4P5LVSoCJaKDknl80Vjzyg",
         "accepting": True,
-        "does": "Tapers &amp; skin fades · Short &amp; medium cuts · Hot towel shaves · Beard work",
+        "does": "Tapers &amp; skin fades · Flows · Short &amp; medium cuts · Hot towel shaves · Beard work",
         "services": ["skin-fades", "mens-haircuts", "flow-haircuts", "hot-towel-shaves", "beard-trims", "womens-haircuts"],
         "title": "Colette, Barber at Salon Polo in Annapolis, MD",
         "description": "Book with Colette, licensed barber at Salon Polo in Annapolis, MD. Tapers, skin fades, short and medium cuts, hot towel shaves and beard work.",
