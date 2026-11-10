@@ -210,6 +210,7 @@ TEAM = [
         "accepting": True,
         "does": "Short to long cuts · Fades &amp; tapers · Beard work · Gray blending",
         "services": ["mens-haircuts", "skin-fades", "beard-trims", "gray-blending"],
+        "extra": ["Women's haircuts"],
         "title": "Amber, Stylist at Salon Polo in Annapolis, MD",
         "description": "Book with Amber at Salon Polo in Annapolis, MD. Cutting hair for almost 10 years, specializing in men's grooming: cuts, fades, beards and gray blending.",
         "h1": "Amber",
@@ -350,7 +351,7 @@ def person_ld(t):
         "url": abs_url(f"team/{t['slug']}/"),
         "image": img_url(t["photo"]),
         "worksFor": {"@id": SALON_ID},
-        "knowsAbout": [html.unescape(SVC[s]["name"]) for s in t["services"]],
+        "knowsAbout": [html.unescape(SVC[s]["name"]) for s in t["services"]] + t.get("extra", []),
         "hasCredential": {"@type": "EducationalOccupationalCredential", "credentialCategory": "license", "name": t["license"]},
     }
 
@@ -941,6 +942,7 @@ def build_person(t):
     crumbs = [("Home", ""), ("Team", "team/"), (t["name"], path)]
     bio = "\n".join(f"      <p>{p}</p>" for p in t["bio"])
     chips = "".join(f'<li><a href="{R}services/{s}/">{SVC[s]["name"]}</a></li>' for s in t["services"])
+    chips += "".join(f"<li><span>{x}</span></li>" for x in t.get("extra", []))
     qa = ""
     if t["qa"]:
         rows = "".join(f"<div><dt>{q}</dt><dd>{a}</dd></div>" for q, a in t["qa"])
