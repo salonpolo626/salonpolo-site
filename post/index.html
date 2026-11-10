@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Today's Post · Salon Polo</title>
+<style>
+  :root { --bg:#111; --card:#1b1b1b; --fg:#f2f2f2; --muted:#a8a8a8; --accent:#c9a46a; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.5 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
+  main { max-width:520px; margin:0 auto; padding:20px 16px 48px; }
+  h1 { font-size:22px; margin:4px 0 2px; }
+  .sub { color:var(--muted); margin:0 0 18px; font-size:14px; }
+  h2 { font-size:15px; text-transform:uppercase; letter-spacing:.08em; color:var(--accent); margin:26px 0 10px; }
+  img { width:100%; border-radius:12px; display:block; }
+  .tip { color:var(--muted); font-size:14px; margin:8px 0 0; }
+  .card { background:var(--card); border-radius:12px; padding:14px 16px; white-space:pre-wrap; font-size:15px; }
+  button { width:100%; margin-top:10px; padding:14px; border:0; border-radius:10px; background:var(--accent); color:#111; font-size:16px; font-weight:600; }
+  ol { padding-left:20px; margin:0; } li { margin:6px 0; }
+  ul { padding-left:20px; margin:0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Today's post: the flow cut</h1>
+  <p class="sub">For Instagram + Facebook · Tue, Nov 10, 2026</p>
+
+  <h2>1 · Save the photo</h2>
+  <img src="flow-cut.jpg" alt="Men's flow haircut with soft layers and natural wave">
+  <p class="tip">Press and hold the photo, then tap <b>Save to Photos</b>.</p>
+
+  <h2>2 · Copy the caption</h2>
+  <div class="card" id="cap">Not a traditional barbershop. ✂️
+
+Flow cuts take shears, patience and someone who knows how hair moves: soft layers, texture, and a shape that grows out right. That's what we do every day.
+
+Book with Alexis, Amber or Colette at salonpolo.com, or walk in Tue–Sat.
+📍 626 Admiral Dr, Annapolis
+
+#annapolisbarber #annapolismd #flowhaircut #mensflow #scissorcut #annapolisbarbershop #menshair</div>
+  <button id="copy">Copy caption</button>
+
+  <h2>3 · Music</h2>
+  <p style="margin:0 0 8px">In <b>Add music</b>, search one of these and pick a track that feels smooth and confident:</p>
+  <ul>
+    <li><b>chill hip hop</b>: laid-back beat</li>
+    <li><b>lofi</b>: mellow and clean</li>
+    <li><b>groovy</b> or <b>soul</b>: warm, a little retro</li>
+  </ul>
+
+  <h2>4 · Post it</h2>
+  <ol>
+    <li>Open Instagram, tap <b>+</b> then <b>Post</b>, and pick the photo. Tap <b>Next</b>.</li>
+    <li>Tap <b>Add music</b> and choose a track.</li>
+    <li>Paste the caption.</li>
+    <li>Tap <b>Add location</b>: Salon Polo or Annapolis, Maryland.</li>
+    <li>Turn on <b>Share to Facebook</b>, then tap <b>Share</b>.</li>
+  </ol>
+</main>
+<script>
+  document.getElementById('copy').addEventListener('click', async function () {
+    var t = document.getElementById('cap').innerText;
+    try { await navigator.clipboard.writeText(t); this.textContent = 'Copied ✓'; }
+    catch (e) {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById('cap'));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      try { document.execCommand('copy'); this.textContent = 'Copied ✓'; } catch (e2) { this.textContent = 'Press and hold the text to copy'; }
+    }
+  });
+</script>
+</body>
+</html>
