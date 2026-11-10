@@ -20,6 +20,7 @@ import os
 # --------------------------------------------------------------------------
 # Settings
 # --------------------------------------------------------------------------
+GA_ID = "G-E663J6DJW9"  # Google Analytics 4 (also receives Phorest booking events)
 SITE_URL = "https://www.salonpolo.com"     # the real domain (used for canonical URLs)
 BASE_PATH = "/"             # where the site is served right now ("/" after the domain switch)
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -529,6 +530,9 @@ def write_page(path, *, title, description, body, ld_nodes, R, current="", og_ty
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','{GA_ID}',{{linker:{{domains:['salonpolo.com','phorest.com']}}}});</script>
+<script src="{R}assets/track.js" defer></script>
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
 <link rel="canonical" href="{canonical}">{robots_tag}
