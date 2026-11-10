@@ -185,11 +185,11 @@ SERVICES = [
         "body": [
             "Women's haircuts at Salon Polo get the same attention as everything else we do. Your appointment starts with a conversation about how you wear your hair, how much time you spend styling it, and how you want it to grow out.",
             "From short cuts and pixies to textured and longer styles, we cut to your hair's natural movement, then finish with Kevin Murphy products and show you how to recreate the look at home.",
-            "Amber and Alexis cut every length. Colette cuts short and medium-length hair. For a wash, cut and blow-dry, book with Alexis: she's the only one on the team who offers it.",
+            "Amber and Alexis cut every length. Colette cuts women's short hair only. For a wash, cut and blow-dry, book with Alexis: she's the only one on the team who offers it.",
         ],
         "menu": ["Women's short haircut", "Women's medium length haircut", "Women's long haircut", "Fringe / face framing only", "Wash, cut &amp; blow-dry"],
         "who": ["alexis", "amber", "colette"],
-        "who_note": {"alexis": "The only one who does wash, cut &amp; blow-dry", "amber": "Cuts every length", "colette": "Short &amp; medium cuts"},
+        "who_note": {"alexis": "The only one who does wash, cut &amp; blow-dry", "amber": "Cuts every length", "colette": "Short cuts only"},
         "photos": ["pixie", "crop"],
     },
 ]
