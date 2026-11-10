@@ -71,7 +71,7 @@ SERVICES = [
         "title": "Men's Haircuts in Annapolis, MD | Salon Polo",
         "description": "Men's haircuts in Annapolis, MD: short, medium and long cuts, tailored scissor work and undercuts. Book online with Alexis, Amber or Colette at Salon Polo.",
         "h1": "Men's haircuts <em>in Annapolis.</em>",
-        "lead": "Short, medium and long cuts, tailored to your head shape and the way your hair grows.",
+        "lead": "Shear work is what we're known for: short, medium and long cuts tailored to your head shape and the way your hair grows.",
         "body": [
             "Every men's haircut at Salon Polo starts with a conversation: how you wear your hair, how much time you spend styling it, and how you want it to grow out. From there we build the shape with clippers, scissors or both, cut to your head shape and growth pattern rather than a one-size template.",
             "We cut every length. Short, clean cuts. Medium-length cuts with texture and movement. Longer styles, cut dry so we can see exactly how your hair falls. We also do undercuts, and quick neckline cleanups to keep a cut sharp between visits.",
@@ -81,6 +81,24 @@ SERVICES = [
         "who": ["alexis", "amber", "colette"],
         "who_note": {"colette": "Short &amp; medium cuts", "amber": "Her favorite: mullets &amp; textured men’s cuts"},
         "photos": ["scissor", "waves", "mullet"],
+    },
+    {
+        "slug": "flow-haircuts",
+        "name": "Flow & Layered Cuts",
+        "short": "Longer men's cuts with layers, texture and movement.",
+        "title": "Men's Flow Haircuts & Layered Cuts in Annapolis, MD | Salon Polo",
+        "description": "Men's flow haircuts and layered, texturized scissor cuts in Annapolis, MD. Not a traditional barbershop: stylists who cut with shears. Book with Amber or Alexis.",
+        "h1": "Flow haircuts &amp; layers <em>in Annapolis.</em>",
+        "lead": "For men who want more than a clipper cut: shear work, layers and texture that let your hair move.",
+        "body": [
+            "A lot of the men who find us aren't looking for a traditional barbershop. They want a stylist or barber who really knows how to use shears, and a cut with length, layers and movement: the flow.",
+            "A good flow is built with scissors, not clippers. We cut layers so the length sits right, texturize to take out bulk, and shape it around the way your hair grows, so it falls into place on its own and grows out well between visits.",
+            "Flows and longer layered cuts are done by Amber and Alexis. Colette cuts medium-length styles, so she's a good fit if you're keeping it a little shorter.",
+        ],
+        "menu": ["Medium length dry cut", "Long dry cut"],
+        "who": ["amber", "alexis", "colette"],
+        "who_note": {"amber": "Cuts every length", "colette": "Medium length only"},
+        "photos": ["scissor", "wavy", "waves"],
     },
     {
         "slug": "skin-fades",
@@ -162,17 +180,17 @@ SERVICES = [
         "name": "Women's Haircuts",
         "short": "Short, medium and long cuts for women.",
         "title": "Women's Haircuts in Annapolis, MD | Salon Polo",
-        "description": "Women's haircuts in Annapolis, MD at Salon Polo: short cuts, pixies, textured and longer styles with Amber or Alexis. Book online.",
+        "description": "Women's haircuts in Annapolis, MD at Salon Polo: short cuts, pixies, textured and longer styles, plus wash, cut & blow-dry with Alexis. Book online.",
         "h1": "Women's haircuts <em>in Annapolis.</em>",
         "lead": "Precision cuts for women, shaped to your hair and the way you wear it.",
         "body": [
             "Women's haircuts at Salon Polo get the same attention as everything else we do. Your appointment starts with a conversation about how you wear your hair, how much time you spend styling it, and how you want it to grow out.",
             "From short cuts and pixies to textured and longer styles, we cut to your hair's natural movement, then finish with Kevin Murphy products and show you how to recreate the look at home.",
-            "Women's haircuts are done by Amber and Alexis.",
+            "Amber and Alexis cut every length. Colette cuts short and medium-length hair. For a wash, cut and blow-dry, book with Alexis: she's the only one on the team who offers it.",
         ],
-        "menu": ["Short haircut", "Medium length dry cut", "Long dry cut", "Fringe / face framing only"],
-        "who": ["amber", "alexis"],
-        "who_note": {},
+        "menu": ["Short haircut", "Medium length dry cut", "Long dry cut", "Fringe / face framing only", "Wash, cut &amp; blow-dry"],
+        "who": ["alexis", "amber", "colette"],
+        "who_note": {"alexis": "The only one who does wash, cut &amp; blow-dry", "amber": "Cuts every length", "colette": "Short &amp; medium cuts"},
         "photos": ["pixie", "crop"],
     },
 ]
@@ -183,7 +201,7 @@ LISTED = [s for s in SERVICES if not s.get("unlisted")]
 MENU = [
     ("The Cut", "Haircuts", ["Short haircut", "Skin fade", "Medium length dry cut", "Long dry cut", "Undercut",
                              "Neckline cleanup", "Fringe / face framing only", "Child's haircut, 10 &amp; under"],
-     ["mens-haircuts", "skin-fades"]),
+     ["mens-haircuts", "flow-haircuts", "skin-fades"]),
     ("The Groom", "Barbering", ["Traditional hot towel shave", "Hot towel head shave",
                                 "Hot towel premium goatee / beard sculpting", "Express goatee / beard sculpting"],
      ["hot-towel-shaves", "beard-trims"]),
@@ -202,8 +220,8 @@ TEAM = [
         "alt": "Alexis, stylist at Salon Polo, in front of the Kevin Murphy wall",
         "book": "https://www.phorest.com/salon/salonpolobarbershop/book/services?staffId=8HZcPC7pnCw_wKK3vLH13w",
         "accepting": True,
-        "does": "Short to long cuts · Fades &amp; tapers · Beard work",
-        "services": ["mens-haircuts", "skin-fades", "beard-trims", "womens-haircuts"],
+        "does": "Short to long cuts · Flows &amp; layers · Fades &amp; tapers · Beard work · Wash, cut &amp; blow-dry",
+        "services": ["mens-haircuts", "flow-haircuts", "skin-fades", "beard-trims", "womens-haircuts"],
         "title": "Alexis, Stylist at Salon Polo in Annapolis, MD",
         "description": "Book with Alexis at Salon Polo in Annapolis, MD. Cutting hair for almost 10 years, specializing in clipper and scissor cuts, skin fades and beard work.",
         "h1": "Alexis",
@@ -229,14 +247,14 @@ TEAM = [
         "alt": "Amber, stylist at Salon Polo, in front of the Kevin Murphy wall",
         "book": "https://www.phorest.com/salon/salonpolobarbershop/book/services?staffId=X1TsNiO8WNYVHWTYorO8gQ",
         "accepting": True,
-        "does": "Short to long cuts · Fades &amp; tapers · Beard work",
-        "services": ["mens-haircuts", "skin-fades", "beard-trims", "womens-haircuts"],
+        "does": "Short to long cuts · Flows &amp; layers · Fades &amp; tapers · Beard work",
+        "services": ["mens-haircuts", "flow-haircuts", "skin-fades", "beard-trims", "womens-haircuts"],
         "title": "Amber, Stylist at Salon Polo in Annapolis, MD",
-        "description": "Book with Amber at Salon Polo in Annapolis, MD. Cutting hair for almost 10 years, specializing in men's grooming: cuts, fades and beards.",
+        "description": "Book with Amber at Salon Polo in Annapolis, MD. Cutting hair for almost 10 years, specializing in men's grooming: scissor cuts, flows, fades and beards.",
         "h1": "Amber",
         "lead": "Cutting hair for almost 10 years, specializing in men's grooming.",
         "bio": [
-            "Hi, I'm Amber! I've been cutting hair for almost 10 years and specialize in men's grooming while also offering women's haircuts and blowouts. My goal is to help every guest leave my chair looking great and feeling confident.",
+            "Hi, I'm Amber! I've been cutting hair for almost 10 years and specialize in men's grooming while also offering women's haircuts. My goal is to help every guest leave my chair looking great and feeling confident.",
             "When I'm not behind the chair, you'll usually find me spending time with my fur babies, exploring the outdoors, or enjoying a festival. I look forward to meeting you and helping you achieve a look that makes you feel your best!",
         ],
         "qa": [
@@ -257,7 +275,7 @@ TEAM = [
         "book": "https://www.phorest.com/salon/salonpolobarbershop/book/services?staffId=4P5LVSoCJaKDknl80Vjzyg",
         "accepting": True,
         "does": "Tapers &amp; skin fades · Short &amp; medium cuts · Hot towel shaves · Beard work",
-        "services": ["skin-fades", "mens-haircuts", "hot-towel-shaves", "beard-trims"],
+        "services": ["skin-fades", "mens-haircuts", "flow-haircuts", "hot-towel-shaves", "beard-trims", "womens-haircuts"],
         "title": "Colette, Barber at Salon Polo in Annapolis, MD",
         "description": "Book with Colette, licensed barber at Salon Polo in Annapolis, MD. Tapers, skin fades, short and medium cuts, hot towel shaves and beard work.",
         "h1": "Colette",
@@ -340,7 +358,7 @@ def salon_ld(full=False):
     if full:
         d.update({
             "alternateName": "Salon Polo",
-            "description": "A modern barbershop and hair salon in Annapolis, Maryland: tailored scissor cuts, skin fades and tapers, hot towel shaves and beard sculpting.",
+            "description": "A modern barbershop and hair salon in Annapolis, Maryland, known for its shear work: tailored scissor cuts, flows and layered men's cuts, plus skin fades, tapers, hot towel shaves and beard sculpting.",
             "logo": img_url("logo-badge.png"),
             "email": EMAIL,
             "geo": {"@type": "GeoCoordinates", "latitude": GEO[0], "longitude": GEO[1]},
@@ -684,7 +702,7 @@ def build_home():
         <p class="eyebrow">The Team</p>
         <h2>Behind <em>the chair</em></h2>
       </div>
-      <p>Every cut, color and shave at Salon Polo comes from one of these chairs. Choose your stylist or barber when you book.</p>
+      <p>Every cut and shave at Salon Polo comes from one of these chairs. Choose your stylist or barber when you book.</p>
     </header>
     <div class="chairs">
 {chairs}
@@ -761,7 +779,7 @@ def build_home():
     head_extra = f'\n<link rel="preload" as="image" href="{R}assets/img/salon-floor.jpg" fetchpriority="high">'
     return write_page("", R=R,
                       title="Salon Polo | Barbershop & Hair Salon in Annapolis, MD",
-                      description="Modern barbershop & salon in Annapolis, MD: tailored scissor cuts, skin fades and tapers, hot towel shaves and beard sculpting. Book online.",
+                      description="Modern barbershop & salon in Annapolis, MD, known for shear work: tailored scissor cuts, flows and layers, plus fades, hot towel shaves and beards. Book online.",
                       body=body, ld_nodes=[salon_ld(True), website] + [person_ld(t) for t in TEAM],
                       head_extra=head_extra,
                       scripts=f'\n<script src="{R}assets/reviews.js" defer></script>')
@@ -786,7 +804,7 @@ def build_services():
   <div class="wrap">
     {crumbs_html(R, crumbs)}
     <h1>Services <em>at Salon Polo.</em></h1>
-    <p class="lead">Men's haircuts, skin fades and tapers, hot towel shaves and beard sculpting, in Annapolis, Maryland. Every visit starts with a conversation about how you want to look walking out.</p>
+    <p class="lead">Shear work is what we're known for: tailored scissor cuts, flows and layered cuts, plus skin fades, tapers, hot towel shaves and beard work, in Annapolis, Maryland. Every visit starts with a conversation about how you want to look walking out.</p>
     <div class="cta"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book online</a><a class="btn ghost" href="{R}team/">Choose a stylist</a></div>
   </div>
 </header>
