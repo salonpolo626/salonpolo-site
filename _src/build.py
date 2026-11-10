@@ -219,7 +219,7 @@ TEAM = [
             "When I'm not behind the chair, you'll usually find me spending time with my fur babies, exploring the outdoors, or enjoying a festival. I look forward to meeting you and helping you achieve a look that makes you feel your best!",
         ],
         "qa": [],
-        "review": ("Amber did an amazing job! She is great at knowing what’s would look best for me and suggesting how to style it.", "Peter S., Google review"),
+        "review": ("Amber did an amazing job! She is great at knowing what would look best for me and suggesting how to style it.", "Peter S., Google review"),
         "work": ("work/amber.jpg", "Amber smiling as she finishes a guest's slicked-back cut", 1100, 1100),
     },
     {
