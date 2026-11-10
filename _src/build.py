@@ -138,6 +138,8 @@ SERVICES = [
     },
     {
         "slug": "gray-blending",
+        "unlisted": True,   # paused until a color line is chosen; page stays live, not promoted
+        "paused": True,
         "name": "Men's Gray Blending",
         "short": "Softened gray that still looks like you.",
         "title": "Men's Gray Blending in Annapolis, MD | Salon Polo",
@@ -185,7 +187,6 @@ MENU = [
     ("The Groom", "Barbering", ["Traditional hot towel shave", "Hot towel head shave",
                                 "Hot towel premium goatee / beard sculpting", "Express goatee / beard sculpting"],
      ["hot-towel-shaves", "beard-trims"]),
-    ("The Color", "Gray blending &amp; gloss", ["Men's gray blending", "Gloss / tone refresh"], ["gray-blending"]),
 ]
 
 # --------------------------------------------------------------------------
@@ -201,8 +202,8 @@ TEAM = [
         "alt": "Alexis, stylist at Salon Polo, in front of the Kevin Murphy wall",
         "book": "https://www.phorest.com/salon/salonpolobarbershop/book/services?staffId=8HZcPC7pnCw_wKK3vLH13w",
         "accepting": True,
-        "does": "Short to long cuts · Fades &amp; tapers · Beard work · Gray blending",
-        "services": ["mens-haircuts", "skin-fades", "beard-trims", "gray-blending", "womens-haircuts"],
+        "does": "Short to long cuts · Fades &amp; tapers · Beard work",
+        "services": ["mens-haircuts", "skin-fades", "beard-trims", "womens-haircuts"],
         "title": "Alexis, Stylist at Salon Polo in Annapolis, MD",
         "description": "Book with Alexis at Salon Polo in Annapolis, MD. Cutting hair for almost 10 years, specializing in clipper and scissor cuts, skin fades and beard work.",
         "h1": "Alexis",
@@ -228,10 +229,10 @@ TEAM = [
         "alt": "Amber, stylist at Salon Polo, in front of the Kevin Murphy wall",
         "book": "https://www.phorest.com/salon/salonpolobarbershop/book/services?staffId=X1TsNiO8WNYVHWTYorO8gQ",
         "accepting": True,
-        "does": "Short to long cuts · Fades &amp; tapers · Beard work · Gray blending",
-        "services": ["mens-haircuts", "skin-fades", "beard-trims", "gray-blending", "womens-haircuts"],
+        "does": "Short to long cuts · Fades &amp; tapers · Beard work",
+        "services": ["mens-haircuts", "skin-fades", "beard-trims", "womens-haircuts"],
         "title": "Amber, Stylist at Salon Polo in Annapolis, MD",
-        "description": "Book with Amber at Salon Polo in Annapolis, MD. Cutting hair for almost 10 years, specializing in men's grooming: cuts, fades, beards and gray blending.",
+        "description": "Book with Amber at Salon Polo in Annapolis, MD. Cutting hair for almost 10 years, specializing in men's grooming: cuts, fades and beards.",
         "h1": "Amber",
         "lead": "Cutting hair for almost 10 years, specializing in men's grooming.",
         "bio": [
@@ -339,7 +340,7 @@ def salon_ld(full=False):
     if full:
         d.update({
             "alternateName": "Salon Polo",
-            "description": "A modern barbershop and hair salon in Annapolis, Maryland: tailored scissor cuts, skin fades and tapers, hot towel shaves, beard sculpting and men's gray blending.",
+            "description": "A modern barbershop and hair salon in Annapolis, Maryland: tailored scissor cuts, skin fades and tapers, hot towel shaves and beard sculpting.",
             "logo": img_url("logo-badge.png"),
             "email": EMAIL,
             "geo": {"@type": "GeoCoordinates", "latitude": GEO[0], "longitude": GEO[1]},
@@ -355,7 +356,7 @@ def salon_ld(full=False):
             "employee": [{"@id": abs_url(f"team/{t['slug']}/#person")} for t in TEAM],
             "hasOfferCatalog": {
                 "@type": "OfferCatalog", "name": "Services",
-                "itemListElement": [{"@type": "Offer", "itemOffered": {"@id": abs_url(f"services/{s['slug']}/#service")}} for s in SERVICES],
+                "itemListElement": [{"@type": "Offer", "itemOffered": {"@id": abs_url(f"services/{s['slug']}/#service")}} for s in SERVICES if not s.get("paused")],
             },
         })
     return d
@@ -760,7 +761,7 @@ def build_home():
     head_extra = f'\n<link rel="preload" as="image" href="{R}assets/img/salon-floor.jpg" fetchpriority="high">'
     return write_page("", R=R,
                       title="Salon Polo | Barbershop & Hair Salon in Annapolis, MD",
-                      description="Modern barbershop & salon in Annapolis, MD: tailored scissor cuts, skin fades and tapers, hot towel shaves, beard sculpting and gray blending. Book online.",
+                      description="Modern barbershop & salon in Annapolis, MD: tailored scissor cuts, skin fades and tapers, hot towel shaves and beard sculpting. Book online.",
                       body=body, ld_nodes=[salon_ld(True), website] + [person_ld(t) for t in TEAM],
                       head_extra=head_extra,
                       scripts=f'\n<script src="{R}assets/reviews.js" defer></script>')
@@ -785,7 +786,7 @@ def build_services():
   <div class="wrap">
     {crumbs_html(R, crumbs)}
     <h1>Services <em>at Salon Polo.</em></h1>
-    <p class="lead">Men's haircuts, skin fades and tapers, hot towel shaves, beard sculpting and men's gray blending, in Annapolis, Maryland. Every visit starts with a conversation about how you want to look walking out.</p>
+    <p class="lead">Men's haircuts, skin fades and tapers, hot towel shaves and beard sculpting, in Annapolis, Maryland. Every visit starts with a conversation about how you want to look walking out.</p>
     <div class="cta"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book online</a><a class="btn ghost" href="{R}team/">Choose a stylist</a></div>
   </div>
 </header>
@@ -821,7 +822,7 @@ def build_services():
                                       "name": html.unescape(s["name"])} for i, s in enumerate(LISTED)]}
     return write_page(path, R=R, current="services/",
                       title="Haircuts, Fades, Shaves & Beard Trims | Salon Polo Annapolis",
-                      description="Salon Polo services in Annapolis, MD: men's haircuts, skin fades and tapers, hot towel shaves, beard trims and men's gray blending. Book online.",
+                      description="Salon Polo services in Annapolis, MD: men's haircuts, skin fades and tapers, hot towel shaves and beard trims. Book online.",
                       body=body, ld_nodes=[salon_ld(), item_list, crumbs_ld(crumbs)])
 
 

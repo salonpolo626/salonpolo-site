@@ -71,7 +71,7 @@ em { font-style: italic; }
 .carte h2 { font-size: clamp(2.8rem, 6.4vw, 5.6rem); line-height: .95; margin-top: 14px; }
 .carte header p { margin: 0; color: var(--mute); max-width: 38ch; }
 .menu { display: grid; grid-template-columns: 1fr; gap: 0 80px; }
-@media (min-width: 860px) { .menu { grid-template-columns: repeat(3, 1fr); gap: 0 56px; } }
+@media (min-width: 860px) { .menu { grid-template-columns: repeat(2, 1fr); gap: 0 56px; } }
 .course { padding-block: 26px; border-top: 1px solid var(--ink); min-width: 0; }
 .course h3 { font-size: 2rem; margin-bottom: 12px; display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
 .course h3 small { font-family: var(--body); font-size: .66rem; letter-spacing: .24em; text-transform: uppercase; color: var(--oak); }
