@@ -278,7 +278,7 @@ TEAM = [
         "does": "Tapers &amp; skin fades · Flows · Short &amp; medium cuts · Hot towel shaves · Beard work",
         "services": ["skin-fades", "mens-haircuts", "flow-haircuts", "hot-towel-shaves", "beard-trims", "womens-haircuts"],
         "title": "Colette, Barber at Salon Polo in Annapolis, MD",
-        "description": "Book with Colette, licensed barber at Salon Polo in Annapolis, MD. Tapers, skin fades, short and medium cuts, hot towel shaves and beard work.",
+        "description": "Book with Colette, licensed barber at Salon Polo in Annapolis, MD. Tapers, skin fades, flows, short and medium cuts, hot towel shaves and beard work.",
         "h1": "Colette",
         "lead": "Licensed barber, cutting hair since she was 17. Her favorites: tapers, skin fades, beard work and shaves.",
         "bio": [
