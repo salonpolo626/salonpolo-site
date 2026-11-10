@@ -154,8 +154,28 @@ SERVICES = [
         "who_note": {},
         "photos": [],
     },
+    {
+        "slug": "womens-haircuts",
+        "unlisted": True,   # linked from Amber's and Alexis's pages only, not promoted in menus
+        "name": "Women's Haircuts",
+        "short": "Short, medium and long cuts for women.",
+        "title": "Women's Haircuts in Annapolis, MD | Salon Polo",
+        "description": "Women's haircuts in Annapolis, MD at Salon Polo: short cuts, pixies, textured and longer styles with Amber or Alexis. Book online.",
+        "h1": "Women's haircuts <em>in Annapolis.</em>",
+        "lead": "Precision cuts for women, shaped to your hair and the way you wear it.",
+        "body": [
+            "Women's haircuts at Salon Polo get the same attention as everything else we do. Your appointment starts with a conversation about how you wear your hair, how much time you spend styling it, and how you want it to grow out.",
+            "From short cuts and pixies to textured and longer styles, we cut to your hair's natural movement, then finish with Kevin Murphy products and show you how to recreate the look at home.",
+            "Women's haircuts are done by Amber and Alexis.",
+        ],
+        "menu": ["Short haircut", "Medium length dry cut", "Long dry cut", "Fringe / face framing only"],
+        "who": ["amber", "alexis"],
+        "who_note": {},
+        "photos": ["pixie", "crop"],
+    },
 ]
 SVC = {s["slug"]: s for s in SERVICES}
+LISTED = [s for s in SERVICES if not s.get("unlisted")]
 
 # The full menu (names only, no prices)
 MENU = [
@@ -182,7 +202,7 @@ TEAM = [
         "book": "https://www.phorest.com/salon/salonpolobarbershop/book/services?staffId=8HZcPC7pnCw_wKK3vLH13w",
         "accepting": True,
         "does": "Short to long cuts · Fades &amp; tapers · Beard work · Gray blending",
-        "services": ["mens-haircuts", "skin-fades", "beard-trims", "gray-blending"],
+        "services": ["mens-haircuts", "skin-fades", "beard-trims", "gray-blending", "womens-haircuts"],
         "title": "Alexis, Stylist at Salon Polo in Annapolis, MD",
         "description": "Book with Alexis at Salon Polo in Annapolis, MD. Cutting hair for almost 10 years, specializing in clipper and scissor cuts, skin fades and beard work.",
         "h1": "Alexis",
@@ -209,8 +229,7 @@ TEAM = [
         "book": "https://www.phorest.com/salon/salonpolobarbershop/book/services?staffId=X1TsNiO8WNYVHWTYorO8gQ",
         "accepting": True,
         "does": "Short to long cuts · Fades &amp; tapers · Beard work · Gray blending",
-        "services": ["mens-haircuts", "skin-fades", "beard-trims", "gray-blending"],
-        "extra": ["Women's haircuts"],
+        "services": ["mens-haircuts", "skin-fades", "beard-trims", "gray-blending", "womens-haircuts"],
         "title": "Amber, Stylist at Salon Polo in Annapolis, MD",
         "description": "Book with Amber at Salon Polo in Annapolis, MD. Cutting hair for almost 10 years, specializing in men's grooming: cuts, fades, beards and gray blending.",
         "h1": "Amber",
@@ -421,7 +440,7 @@ def nav_html(R, current):
 
 def footer_html(R):
     hours = "".join(f"<span>{d[:3]}</span><span>{hours_short(s)}</span>" for d, s in HOURS)
-    svc = "".join(f'<li><a href="{R}services/{s["slug"]}/">{s["name"]}</a></li>' for s in SERVICES)
+    svc = "".join(f'<li><a href="{R}services/{s["slug"]}/">{s["name"]}</a></li>' for s in LISTED)
     team = "".join(f'<li><a href="{R}team/{t["slug"]}/">{t["name"]}, {t["role"]}</a></li>' for t in TEAM)
     return f'''<footer class="sitefoot">
   <div class="wrap">
@@ -752,7 +771,7 @@ def build_services():
     R = rel(path)
     cards = "\n".join(
         f'''      <a class="svc" href="{R}services/{s["slug"]}/"><h3>{s["name"]} <span>{who_count(s["who"])}</span></h3><p>{s["short"]} Booked with {", ".join(TM[w]["name"] for w in s["who"])}.</p></a>'''
-        for s in SERVICES)
+        for s in LISTED)
     menu = []
     for title, small, items, links in MENU:
         more = " ".join(f'<a class="more" href="{R}services/{s}/">{SVC[s]["name"]}</a>' for s in links)
@@ -799,7 +818,7 @@ def build_services():
 {bookband(R)}'''
     item_list = {"@type": "ItemList", "name": "Services at Salon Polo",
                  "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": abs_url(f"services/{s['slug']}/"),
-                                      "name": html.unescape(s["name"])} for i, s in enumerate(SERVICES)]}
+                                      "name": html.unescape(s["name"])} for i, s in enumerate(LISTED)]}
     return write_page(path, R=R, current="services/",
                       title="Haircuts, Fades, Shaves & Beard Trims | Salon Polo Annapolis",
                       description="Salon Polo services in Annapolis, MD: men's haircuts, skin fades and tapers, hot towel shaves, beard trims and men's gray blending. Book online.",
@@ -837,7 +856,7 @@ def build_service(s):
 </section>'''
     others = "\n".join(
         f'      <a class="svc" href="{R}services/{o["slug"]}/"><h3>{o["name"]}</h3><p>{o["short"]}</p></a>'
-        for o in SERVICES if o["slug"] != s["slug"])
+        for o in LISTED if o["slug"] != s["slug"])
     book = TM[s["who"][0]]["book"] if len(s["who"]) == 1 else BOOK
     book_label = f'Book with {TM[s["who"][0]]["name"]}' if len(s["who"]) == 1 else "Book online"
     body = f'''<header class="phead">
