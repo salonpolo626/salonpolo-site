@@ -49,7 +49,7 @@ em { font-style: italic; }
 
 /* Hero: the photo leads, headline set over its lower edge */
 .hero { position: relative; overflow: hidden; background: var(--ink); }
-.hero .photo { display: block; width: 100%; height: min(clamp(480px, 56vw, 760px), calc(100svh - 76px)); min-height: 460px; object-fit: cover; object-position: 55% 45%; }
+.hero .photo { display: block; width: 100%; height: min(clamp(480px, 56vw, 760px), calc(100svh - 76px)); min-height: 460px; object-fit: cover; object-position: 55% 0%; }
 .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(17,17,17,0) 20%, rgba(17,17,17,.45) 50%, rgba(17,17,17,.85) 100%), linear-gradient(90deg, rgba(17,17,17,.45) 0%, rgba(17,17,17,0) 60%); pointer-events: none; }
 .hero-text { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; color: var(--wall); padding-block: 0 clamp(28px, 4.5vw, 64px); }
 .hero-text .kicker { margin: 0 0 14px; font-size: .7rem; letter-spacing: .26em; text-transform: uppercase; color: rgba(251,250,248,.85); }
@@ -61,7 +61,7 @@ em { font-style: italic; }
 .btn.light:hover { background: transparent; color: var(--wall) !important; }
 .btn.ghost.light { background: transparent; border-color: var(--wall); color: var(--wall) !important; }
 .btn.ghost.light:hover { background: var(--wall); color: var(--ink) !important; }
-.hero .photo { transform-origin: 58% 42%; animation: pushin 22s ease-in-out infinite alternate; will-change: transform; }
+.hero .photo { transform-origin: 58% 12%; animation: pushin 22s ease-in-out infinite alternate; will-change: transform; }
 @keyframes pushin { from { transform: scale(1); } to { transform: scale(1.18); } }
 @keyframes rise { from { opacity: .001; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .hero-text h1, .hero .photo { animation: none; } html { scroll-behavior: auto; } }
