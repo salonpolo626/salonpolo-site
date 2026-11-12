@@ -265,7 +265,7 @@ TEAM = [
             ("Mountains, beach, or music festival?", "“Definitely a music festival… but I’d happily go to one on the beach with mountains in the background!”"),
         ],
         "review": ("Amber did an amazing job! She is great at knowing what would look best for me and suggesting how to style it.", "Peter S., Google review"),
-        "work": ("work/amber.jpg", "Amber smiling as she finishes a guest's slicked-back cut", 1100, 1100),
+        "work": ("work/amber-guest.jpg", "Amber smiling beside a guest after styling his textured mullet", 1100, 1100),
     },
     {
         "slug": "colette",
@@ -1253,7 +1253,7 @@ def build_sitemap(paths):
     with open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8") as f:
         f.write(xml)
     with open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8") as f:
-        f.write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n")
+        f.write(f"User-agent: *\nAllow: /\nDisallow: /post/\n\nSitemap: {SITE_URL}/sitemap.xml\n")
 
 
 def main():
