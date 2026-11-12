@@ -314,7 +314,7 @@ WORK = [  # (file, alt, w, h, css class, inline style)
     ("mullet", "Profile of a textured modern mullet with a taper fade", 1100, 1100, "", ""),
     ("pixie", "Short silver pixie cut with soft texture on top", 1100, 1100, "", ""),
     ("wavy", "Men's textured cut with natural waves and a soft, longer back", 700, 1490, "tall", "object-position: 50% 0%"),
-    ("fringe", "Shaggy textured cut with a heavy fringe", 1100, 1100, "", ""),
+    ("fringe", "Profile of a short textured men's cut with a taper fade and trimmed beard", 1100, 1100, "", ""),
     ("slick", "Slicked-back men's cut with a tapered side and full beard", 1100, 1100, "", ""),
     ("crop", "Short textured crop with choppy layers and a soft fringe", 1100, 1100, "", ""),
     ("amber", "Stylist Amber smiling as she finishes a guest's slicked-back cut", 1100, 1100, "", ""),
